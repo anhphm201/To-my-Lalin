@@ -3,645 +3,1061 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gửi em — một điều anh muốn nói</title>
+
+<title>Sến Sẩm — Hà Phương Anh × Phạm Minh Ánh</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Parisienne&display=swap');
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: "Be Vietnam Pro", sans-serif;
-    background: #fff8f7;
-    color: #3b2929;
-    overflow-x: hidden;
+body{
+    background:#f9f5ef;
+    color:#392b2c;
+    font-family:"Be Vietnam Pro",sans-serif;
+    overflow-x:hidden;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.28;
-    background-image:
-        radial-gradient(#e9b8b8 0.7px, transparent 0.7px);
-    background-size: 22px 22px;
-    z-index: -1;
+button{
+    font-family:inherit;
 }
 
-section {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 22px;
+::selection{
+    background:#e8b9bd;
+    color:#3d292b;
 }
 
-/* =========================
-   FLOATING HEARTS
-========================= */
 
-.heart {
-    position: fixed;
-    bottom: -30px;
-    font-size: 15px;
-    opacity: 0;
-    pointer-events: none;
-    animation: floatHeart linear forwards;
-    z-index: 5;
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --paper:#f9f5ef;
+    --paper-light:#fffdf9;
+    --pink:#c87983;
+    --pink-dark:#8d3e49;
+    --pink-soft:#e9c4c7;
+    --wine:#573238;
+    --text:#403234;
+    --muted:#806d6e;
+    --line:#dfc9c5;
 }
 
-@keyframes floatHeart {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-    }
-    15% {
-        opacity: .7;
-    }
-    100% {
-        transform: translateY(-110vh) rotate(25deg);
-        opacity: 0;
-    }
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+section{
+    position:relative;
+    min-height:100vh;
+    padding:100px 22px;
 }
 
-/* =========================
-   OPENING
-========================= */
+.container{
+    width:min(900px,100%);
+    margin:auto;
+}
 
-#opening {
-    flex-direction: column;
-    text-align: center;
+.center{
+    text-align:center;
+}
+
+.serif{
+    font-family:"Cormorant Garamond",serif;
+}
+
+.script{
+    font-family:"Parisienne",cursive;
+}
+
+.eyebrow{
+    font-size:11px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#a47779;
+    margin-bottom:22px;
+}
+
+.chapter-title{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(42px,8vw,76px);
+    line-height:1;
+    font-weight:400;
+    color:#573238;
+}
+
+.body-text{
+    max-width:700px;
+    margin:35px auto 0;
+    font-size:15px;
+    line-height:2.15;
+    font-weight:300;
+    color:var(--muted);
+}
+
+.divider{
+    width:60px;
+    height:1px;
+    background:var(--pink-soft);
+    margin:35px auto;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+#intro{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
     background:
-        radial-gradient(circle at 50% 40%, #fff 0%, #fff8f7 55%, #f8e7e6 100%);
+        radial-gradient(
+            circle at 50% 35%,
+            #fffdf9 0%,
+            #f9f5ef 55%,
+            #f1dedb 100%
+        );
 }
 
-.small {
-    font-size: 12px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #a97979;
-    margin-bottom: 24px;
+.intro-content{
+    max-width:760px;
 }
 
-.script {
-    font-family: "Parisienne", cursive;
-    font-size: clamp(48px, 12vw, 90px);
-    color: #9e3f4c;
-    line-height: 1;
+.intro-small{
+    font-size:11px;
+    letter-spacing:5px;
+    color:#9c7778;
+    margin-bottom:28px;
 }
 
-.opening-title {
-    font-size: clamp(25px, 6vw, 43px);
-    font-weight: 500;
-    margin-top: 22px;
-    line-height: 1.45;
+.intro-title{
+    font-family:"Parisienne",cursive;
+    font-size:clamp(65px,15vw,130px);
+    line-height:.9;
+    color:var(--pink-dark);
 }
 
-.opening-sub {
-    max-width: 520px;
-    margin-top: 20px;
-    color: #846c6c;
-    font-weight: 300;
-    line-height: 1.9;
+.intro-subtitle{
+    margin-top:35px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(23px,5vw,35px);
+    font-weight:400;
+    line-height:1.45;
 }
 
-.open-btn {
-    margin-top: 45px;
-    padding: 16px 30px;
-    border: 1px solid #c98f94;
-    border-radius: 999px;
-    background: rgba(255,255,255,.75);
-    color: #873f49;
-    font-family: inherit;
-    font-size: 15px;
-    cursor: pointer;
-    transition: .3s;
-    box-shadow: 0 10px 30px rgba(120,50,60,.08);
+.intro-date{
+    margin-top:20px;
+    color:#947879;
+    font-size:12px;
+    letter-spacing:2px;
 }
 
-.open-btn:hover {
-    transform: translateY(-3px);
-    background: #fff;
-    box-shadow: 0 15px 35px rgba(120,50,60,.14);
+.start-btn{
+    margin-top:50px;
+    border:1px solid #c58b91;
+    background:rgba(255,255,255,.55);
+    color:#833f48;
+    padding:15px 30px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:.35s;
 }
 
-.scroll-note {
-    position: absolute;
-    bottom: 28px;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: #b69b9b;
+.start-btn:hover{
+    background:#fff;
+    transform:translateY(-3px);
+    box-shadow:0 15px 40px rgba(100,50,50,.12);
 }
 
-/* =========================
-   STORY
-========================= */
-
-.story {
-    flex-direction: column;
+.scroll-hint{
+    position:absolute;
+    bottom:28px;
+    font-size:10px;
+    letter-spacing:3px;
+    color:#ad9393;
 }
 
-.story-inner {
-    max-width: 760px;
-    width: 100%;
+
+/* =========================================================
+   CHAPTER 1
+========================================================= */
+
+#beginning{
+    background:var(--paper-light);
 }
 
-.chapter {
-    text-align: center;
-    margin-bottom: 55px;
+.chapter-header{
+    text-align:center;
+    margin-bottom:80px;
 }
 
-.chapter-number {
-    font-size: 12px;
-    letter-spacing: 4px;
-    color: #b27878;
-    margin-bottom: 15px;
+.chapter-number{
+    font-size:11px;
+    letter-spacing:5px;
+    color:#a8787a;
+    margin-bottom:18px;
 }
 
-.chapter h2 {
-    font-size: clamp(28px, 6vw, 44px);
-    font-weight: 500;
+.story-block{
+    max-width:720px;
+    margin:0 auto 80px;
 }
 
-.chapter p {
-    margin: 18px auto 0;
-    max-width: 600px;
-    line-height: 2;
-    color: #755f5f;
-    font-weight: 300;
+.story-block:last-child{
+    margin-bottom:0;
 }
 
-.timeline {
-    position: relative;
-    margin-top: 55px;
+.story-label{
+    font-family:"Cormorant Garamond",serif;
+    font-size:28px;
+    color:#713f45;
+    margin-bottom:20px;
 }
 
-.timeline::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: #dfc0c0;
+.story-block p{
+    font-size:15px;
+    line-height:2.15;
+    color:#725f60;
+    font-weight:300;
 }
 
-.event {
-    width: 50%;
-    padding: 25px 40px;
-    position: relative;
+.emphasis{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(27px,5vw,39px);
+    line-height:1.45;
+    color:#7e3c46;
+    text-align:center;
+    margin:55px auto;
+    max-width:700px;
 }
 
-.event:nth-child(odd) {
-    text-align: right;
-    padding-left: 0;
+.year-line{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin:80px 0;
 }
 
-.event:nth-child(even) {
-    margin-left: 50%;
-    padding-right: 0;
+.year-line::before,
+.year-line::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
 }
 
-.event::after {
-    content: "♡";
-    position: absolute;
-    top: 27px;
-    color: #a94f5b;
-    background: #fff8f7;
-    font-size: 15px;
+.year-line span{
+    font-family:"Cormorant Garamond",serif;
+    color:#9d7072;
+    font-size:20px;
 }
 
-.event:nth-child(odd)::after {
-    right: -9px;
+
+/* =========================================================
+   CHAPTER 2
+========================================================= */
+
+#feelings{
+    background:#f2e2df;
 }
 
-.event:nth-child(even)::after {
-    left: -9px;
+.safe-zone{
+    width:min(800px,100%);
+    margin:auto;
+    text-align:center;
 }
 
-.date {
-    color: #a34c58;
-    font-size: 13px;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
+.safe-zone-text{
+    margin-top:45px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(26px,5vw,42px);
+    line-height:1.6;
+    color:#62383e;
 }
 
-.event h3 {
-    font-size: 19px;
-    font-weight: 500;
-    margin-bottom: 8px;
+.safe-zone-note{
+    max-width:600px;
+    margin:35px auto 0;
+    font-size:14px;
+    line-height:2;
+    color:#80696a;
+    font-weight:300;
 }
 
-.event p {
-    color: #806d6d;
-    line-height: 1.8;
-    font-size: 14px;
+
+/* =========================================================
+   CHAPTER 3 — LOVE
+========================================================= */
+
+#love{
+    background:var(--paper-light);
 }
 
-/* =========================
-   CALL SECTION
-========================= */
-
-.call-section {
-    background: #4a3032;
-    color: #fff8f7;
-    text-align: center;
+.love-intro{
+    text-align:center;
+    max-width:750px;
+    margin:0 auto 80px;
 }
 
-.call-inner {
-    max-width: 700px;
+.love-intro p{
+    margin-top:30px;
+    color:#756263;
+    line-height:2.1;
+    font-weight:300;
 }
 
-.call-inner .small {
-    color: #d9b9b9;
+.three-things{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:60px;
 }
 
-.call-title {
-    font-size: clamp(30px, 7vw, 52px);
-    font-weight: 400;
-    line-height: 1.4;
+.love-card{
+    padding:35px 25px;
+    background:#faf5ef;
+    border:1px solid #ead9d5;
+    text-align:center;
 }
 
-.call-text {
-    margin-top: 28px;
-    color: #ead8d8;
-    line-height: 2.1;
-    font-weight: 300;
+.love-card .number{
+    font-family:"Cormorant Garamond",serif;
+    font-size:35px;
+    color:#b36b74;
 }
 
-.phone-line {
-    margin: 40px auto;
-    width: 90px;
-    height: 1px;
-    background: #c58d92;
+.love-card p{
+    margin-top:15px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:22px;
+    line-height:1.5;
+    color:#633b40;
 }
 
-/* =========================
-   LETTER
-========================= */
-
-.letter-section {
-    background: #fff;
+.one-thing{
+    margin-top:70px;
+    text-align:center;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(27px,5vw,42px);
+    color:#713b43;
+    line-height:1.5;
 }
 
-.letter {
-    max-width: 720px;
-    width: 100%;
-    background: #fffdf9;
-    padding: clamp(35px, 7vw, 75px);
-    box-shadow: 0 25px 80px rgba(80,45,45,.10);
-    border: 1px solid #f1dddd;
-    position: relative;
+
+/* =========================================================
+   CHAPTER 4 — LONG DISTANCE
+========================================================= */
+
+#distance{
+    background:#503237;
+    color:#fff8f6;
 }
 
-.letter::before {
-    content: "♡";
-    position: absolute;
-    top: 25px;
-    right: 30px;
-    color: #c15a65;
-    font-size: 25px;
+.distance-container{
+    width:min(760px,100%);
+    margin:auto;
 }
 
-.letter-date {
-    text-align: right;
-    color: #a98b8b;
-    font-size: 12px;
-    margin-bottom: 35px;
+#distance .chapter-number{
+    color:#d6b2b4;
 }
 
-.letter h2 {
-    font-family: "Parisienne", cursive;
-    color: #963e4b;
-    font-size: 48px;
-    font-weight: 400;
-    margin-bottom: 35px;
+#distance .chapter-title{
+    color:#fff5f2;
 }
 
-.letter p {
-    font-size: 16px;
-    line-height: 2.2;
-    color: #554343;
-    margin-bottom: 24px;
+.distance-text{
+    margin-top:65px;
 }
 
-.highlight {
-    color: #9e3f4c;
+.distance-text p{
+    margin-bottom:28px;
+    font-size:15px;
+    line-height:2.15;
+    font-weight:300;
+    color:#e7d7d5;
 }
 
-.signature {
-    margin-top: 40px;
-    text-align: right;
-    font-family: "Parisienne", cursive;
-    font-size: 35px;
-    color: #963e4b;
+.distance-text .strong{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(28px,5vw,43px);
+    line-height:1.45;
+    color:#fff4f0;
+    margin:55px 0;
+    text-align:center;
 }
 
-/* =========================
-   FLOWER
-========================= */
-
-.flower-section {
-    flex-direction: column;
-    text-align: center;
-    background: #fff8f7;
+.distance-text .tiny{
+    font-family:"Cormorant Garamond",serif;
+    font-size:25px;
+    color:#f2dfe0;
 }
 
-.flower {
-    font-size: 80px;
-    margin-bottom: 30px;
-    animation: flowerFloat 4s ease-in-out infinite;
+.waiting{
+    margin:80px auto;
+    text-align:center;
+    padding:55px 25px;
+    border-top:1px solid rgba(255,255,255,.2);
+    border-bottom:1px solid rgba(255,255,255,.2);
 }
 
-@keyframes flowerFloat {
-    0%,100% { transform: translateY(0) rotate(-2deg); }
-    50% { transform: translateY(-10px) rotate(2deg); }
+.waiting p{
+    margin:0;
 }
 
-.flower-section h2 {
-    font-size: clamp(29px, 7vw, 48px);
-    font-weight: 500;
-    line-height: 1.4;
+.day-counter{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(27px,6vw,45px);
+    color:#fff;
+    line-height:1.5;
 }
 
-.flower-section p {
-    max-width: 600px;
-    margin-top: 22px;
-    color: #796565;
-    line-height: 2;
+
+/* =========================================================
+   CHAPTER 5 — PROMISES
+========================================================= */
+
+#promises{
+    background:#fffdf9;
 }
 
-/* =========================
-   FINAL QUESTION
-========================= */
+.promise-intro{
+    text-align:center;
+    max-width:700px;
+    margin:0 auto 75px;
+}
 
-#question {
-    min-height: 100vh;
+.promise-intro p{
+    margin-top:30px;
+    color:#776465;
+    line-height:2;
+}
+
+.promise{
+    max-width:720px;
+    margin:0 auto;
+    padding:45px 0;
+    border-bottom:1px solid #eadbd7;
+}
+
+.promise:first-of-type{
+    border-top:1px solid #eadbd7;
+}
+
+.promise-number{
+    color:#b26d75;
+    letter-spacing:3px;
+    font-size:11px;
+    margin-bottom:14px;
+}
+
+.promise h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:31px;
+    font-weight:500;
+    color:#653940;
+    margin-bottom:17px;
+}
+
+.promise p{
+    font-size:15px;
+    line-height:2.15;
+    color:#746263;
+    font-weight:300;
+}
+
+.promise-final{
+    margin-top:80px;
+    text-align:center;
+}
+
+.promise-final p{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(27px,5vw,42px);
+    line-height:1.55;
+    color:#673941;
+}
+
+
+/* =========================================================
+   CHAPTER 6 — SECRET
+========================================================= */
+
+#secret{
+    background:#f4e5e1;
+    display:flex;
+    align-items:center;
+}
+
+.secret-container{
+    width:min(760px,100%);
+    margin:auto;
+    text-align:center;
+}
+
+.secret-text{
+    margin-top:50px;
+}
+
+.secret-text p{
+    font-size:15px;
+    line-height:2.2;
+    color:#755f61;
+    font-weight:300;
+    margin-bottom:25px;
+}
+
+.secret-quote{
+    margin:55px auto;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(27px,5vw,43px);
+    line-height:1.5;
+    color:#713b43;
+}
+
+.name-reveal{
+    margin-top:70px;
+}
+
+.name-intro{
+    font-family:"Cormorant Garamond",serif;
+    font-size:25px;
+    color:#876466;
+}
+
+.her-name{
+    margin-top:18px;
+    font-family:"Parisienne",cursive;
+    font-size:clamp(55px,12vw,100px);
+    color:#913f4c;
+}
+
+.secret-ending{
+    margin-top:30px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(24px,5vw,35px);
+    color:#704249;
+    line-height:1.55;
+}
+
+
+/* =========================================================
+   FLOWER MOMENT
+========================================================= */
+
+#flower{
+    min-height:70vh;
     background:
-        radial-gradient(circle at 50% 45%, #fff1f1 0%, #f9dddd 50%, #d9a2a7 100%);
-    text-align: center;
+        radial-gradient(circle at center,#fffdf9,#f7e8e4);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
 }
 
-.question-inner {
-    max-width: 720px;
+.flower-symbol{
+    font-size:75px;
+    animation:floatFlower 4s ease-in-out infinite;
 }
 
-.question-small {
-    color: #8b555b;
-    letter-spacing: 4px;
-    font-size: 12px;
-    margin-bottom: 30px;
+@keyframes floatFlower{
+    0%,100%{transform:translateY(0) rotate(-2deg);}
+    50%{transform:translateY(-10px) rotate(2deg);}
 }
 
-.question-inner h1 {
-    font-family: "Parisienne", cursive;
-    font-size: clamp(60px, 15vw, 110px);
-    color: #8e3544;
-    font-weight: 400;
-    line-height: 1;
+.flower-text{
+    margin-top:35px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(26px,5vw,43px);
+    line-height:1.55;
+    color:#713c43;
 }
 
-.question-inner h2 {
-    font-size: clamp(25px, 6vw, 43px);
-    font-weight: 500;
-    margin-top: 25px;
-    line-height: 1.5;
+.flower-note{
+    max-width:550px;
+    margin:25px auto 0;
+    color:#816b6c;
+    font-size:14px;
+    line-height:2;
 }
 
-.question-text {
-    margin: 25px auto 0;
-    max-width: 570px;
-    color: #654b4d;
-    line-height: 2;
-}
 
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 40px;
-    flex-wrap: wrap;
-}
+/* =========================================================
+   CHAPTER 7 — PROPOSAL
+========================================================= */
 
-.yes-btn {
-    border: none;
-    background: #8e3544;
-    color: white;
-    padding: 17px 34px;
-    border-radius: 999px;
-    font-family: inherit;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 12px 35px rgba(100,30,40,.22);
-    transition: .3s;
-}
-
-.yes-btn:hover {
-    transform: translateY(-4px) scale(1.03);
-}
-
-.love-note {
-    margin-top: 35px;
-    font-family: "Parisienne", cursive;
-    color: #8e3544;
-    font-size: 32px;
-}
-
-/* =========================
-   END
-========================= */
-
-#ending {
-    display: none;
-    text-align: center;
+#proposal{
+    min-height:100vh;
     background:
-        radial-gradient(circle at center, #fff 0%, #fff1f1 50%, #f4cccc 100%);
+        radial-gradient(
+            circle at center,
+            #fffdfb 0%,
+            #f8e5e2 50%,
+            #e5b7b9 100%
+        );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
 }
 
-.ending-inner {
-    max-width: 650px;
+.proposal-container{
+    width:min(760px,100%);
 }
 
-.ending-heart {
-    font-size: 75px;
-    animation: heartbeat 1.2s infinite;
+.proposal-small{
+    letter-spacing:4px;
+    font-size:10px;
+    color:#9c666c;
+    margin-bottom:30px;
 }
 
-@keyframes heartbeat {
-    0%,100% { transform: scale(1); }
-    20% { transform: scale(1.15); }
-    40% { transform: scale(1); }
+.proposal-title{
+    font-family:"Parisienne",cursive;
+    font-size:clamp(60px,14vw,120px);
+    color:#913e4a;
+    line-height:1;
 }
 
-.ending-inner h1 {
-    font-family: "Parisienne", cursive;
-    font-size: clamp(58px, 14vw, 100px);
-    color: #8e3544;
-    font-weight: 400;
-    margin-top: 20px;
+.proposal-text{
+    margin:45px auto 0;
+    max-width:650px;
+    color:#71595b;
+    font-size:15px;
+    line-height:2.2;
+    font-weight:300;
 }
 
-.ending-inner h2 {
-    font-size: clamp(24px, 5vw, 38px);
-    font-weight: 500;
-    line-height: 1.5;
-    margin-top: 15px;
+.proposal-text .quote{
+    font-family:"Cormorant Garamond",serif;
+    font-size:27px;
+    color:#683940;
+    margin:30px 0;
 }
 
-.ending-inner p {
-    color: #715858;
-    line-height: 2;
-    margin-top: 25px;
+.final-question{
+    margin-top:65px;
 }
 
-.final-sign {
-    margin-top: 40px;
-    font-family: "Parisienne", cursive;
-    font-size: 40px;
-    color: #8e3544;
+.final-question .name{
+    font-family:"Cormorant Garamond",serif;
+    font-size:28px;
+    color:#69383e;
+    margin-bottom:25px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+.final-question h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(34px,7vw,58px);
+    line-height:1.35;
+    font-weight:500;
+    color:#813b47;
+}
 
-@media (max-width: 650px) {
+.question-sub{
+    margin-top:25px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:23px;
+    line-height:1.7;
+    color:#74474c;
+}
 
-    section {
-        padding: 55px 20px;
+.yes-button{
+    margin-top:45px;
+    padding:18px 38px;
+    border:none;
+    border-radius:999px;
+    background:#8d3e49;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    box-shadow:0 15px 40px rgba(100,45,50,.22);
+    transition:.35s;
+}
+
+.yes-button:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 20px 50px rgba(100,45,50,.28);
+}
+
+.wait-note{
+    margin-top:25px;
+    font-size:11px;
+    color:#9b7a7c;
+    letter-spacing:1px;
+}
+
+
+/* =========================================================
+   ENDING
+========================================================= */
+
+#ending{
+    display:none;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at center,#fff,#fae8e7 60%,#e5b5b7);
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.ending-container{
+    width:min(700px,100%);
+}
+
+.ending-heart{
+    font-size:75px;
+    animation:heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1);}
+    20%{transform:scale(1.15);}
+    40%{transform:scale(1);}
+}
+
+.ending-title{
+    margin-top:25px;
+    font-family:"Parisienne",cursive;
+    font-size:clamp(60px,13vw,110px);
+    color:#8d3e49;
+}
+
+.ending-main{
+    margin-top:25px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(29px,6vw,47px);
+    line-height:1.45;
+    color:#64373e;
+}
+
+.ending-text{
+    margin:30px auto 0;
+    max-width:580px;
+    color:#755f61;
+    font-size:14px;
+    line-height:2;
+}
+
+.ending-sign{
+    margin-top:50px;
+    font-family:"Parisienne",cursive;
+    font-size:40px;
+    color:#8d3e49;
+}
+
+.final-signature{
+    margin-top:60px;
+    padding-top:25px;
+    border-top:1px solid rgba(120,70,70,.18);
+    font-family:"Cormorant Garamond",serif;
+    font-size:20px;
+    color:#876568;
+}
+
+
+/* =========================================================
+   FLOWING PETALS
+========================================================= */
+
+.petal{
+    position:fixed;
+    top:-30px;
+    pointer-events:none;
+    z-index:20;
+    opacity:.7;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    10%{
+        opacity:.7;
+    }
+    100%{
+        transform:translateY(110vh) translateX(100px) rotate(360deg);
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   REVEAL ANIMATIONS
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    section{
+        padding:80px 20px;
     }
 
-    .timeline::before {
-        left: 12px;
+    .three-things{
+        grid-template-columns:1fr;
     }
 
-    .event,
-    .event:nth-child(even) {
-        width: 100%;
-        margin-left: 0;
-        padding: 25px 0 25px 40px;
-        text-align: left;
+    .story-block{
+        margin-bottom:60px;
     }
 
-    .event:nth-child(odd)::after,
-    .event:nth-child(even)::after {
-        left: 3px;
-        right: auto;
+    .promise{
+        padding:35px 0;
     }
 
-    .letter p {
-        font-size: 15px;
-        line-height: 2;
+    .distance-text p,
+    .promise p,
+    .story-block p{
+        font-size:14px;
+    }
+
+    .intro-title{
+        font-size:70px;
+    }
+
+    .chapter-title{
+        font-size:52px;
+    }
+
+    .proposal-text{
+        font-size:14px;
     }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
-     OPENING
-========================= -->
 
-<section id="opening">
+<!-- =======================================================
+     INTRO
+======================================================= -->
 
-    <div class="small">11.07.2026 — 19.08.2026</div>
+<section id="intro">
 
-    <div class="script">To my love</div>
+    <div class="intro-content">
 
-    <div class="opening-title">
-        Có một điều anh muốn nói với em.
+        <div class="intro-small">
+            11.07.2026 — 19.08.2026
+        </div>
+
+        <div class="intro-title">
+            Sến Sẩm
+        </div>
+
+        <div class="intro-subtitle">
+            Một câu chuyện mà em đã giữ trong lòng<br>
+            lâu hơn chị nghĩ.
+        </div>
+
+        <div class="intro-date">
+            Hà Phương Anh × Phạm Minh Ánh
+        </div>
+
+        <button class="start-btn" onclick="goTo('beginning')">
+            Mở câu chuyện này nhé ♡
+        </button>
+
     </div>
 
-    <p class="opening-sub">
-        Không phải một câu nói anh có thể buột miệng nói trong một cuộc gọi.
-        <br>
-        Nên hôm nay, anh viết nó lại ở đây.
-    </p>
-
-    <button class="open-btn" onclick="openStory()">
-        Mở ra nhé ♡
-    </button>
-
-    <div class="scroll-note">SCROLL DOWN</div>
+    <div class="scroll-hint">
+        SCROLL
+    </div>
 
 </section>
 
 
-<!-- =========================
-     STORY
-========================= -->
+<!-- =======================================================
+     1. BEGINNING
+======================================================= -->
 
-<section class="story" id="story">
+<section id="beginning">
 
-    <div class="story-inner">
+    <div class="container">
 
-        <div class="chapter">
-            <div class="chapter-number">CHAPTER I</div>
-            <h2>Một ngày rất bình thường</h2>
+        <div class="chapter-header reveal">
+
+            <div class="chapter-number">
+                CHƯƠNG I
+            </div>
+
+            <h1 class="chapter-title">
+                Ngày chúng ta bắt đầu
+            </h1>
+
+            <div class="divider"></div>
+
+        </div>
+
+
+        <div class="story-block reveal">
+
+            <div class="story-label">
+                7 năm trước
+            </div>
 
             <p>
-                Có lẽ lúc bắt đầu, chẳng ai trong hai đứa nghĩ rằng
-                một cuộc trò chuyện vào ngày 11 tháng 7
-                lại có thể đưa chúng ta đến tận hôm nay.
+                Chúng ta đã gặp nhau vào 7 năm trước,
+                nhưng lúc đó mỗi người một cuộc sống.
             </p>
+
+            <p style="margin-top:20px;">
+                Hà Phương Anh là một Quản lý của The Coffee House,
+                còn em chỉ là một Nhân viên mới vào làm.
+            </p>
+
+            <p style="margin-top:20px;">
+                Chỉ tình cờ thấy chị một vài lần,
+                nhưng từ lúc đó, em đã bị sự tự tin,
+                cool ngầu nhưng cũng dịu dàng và đáng yêu
+                làm cho thương nhớ trong lòng.
+            </p>
+
         </div>
 
-        <div class="timeline">
 
-            <div class="event">
-                <div class="date">11.07</div>
-                <h3>Ngày chúng mình bắt đầu nói chuyện</h3>
-                <p>
-                    Một ngày chẳng có gì đặc biệt.
-                    Nhưng sau này nhìn lại, anh nghĩ đó là
-                    một trong những ngày đáng nhớ nhất.
-                </p>
+        <div class="year-line reveal">
+            <span>7 YEARS</span>
+        </div>
+
+
+        <div class="story-block reveal">
+
+            <div class="story-label">
+                Những năm tháng sau đó
             </div>
 
-            <div class="event">
-                <div class="date">NHỮNG NGÀY SAU ĐÓ</div>
-                <h3>Từ một cuộc trò chuyện thành một thói quen</h3>
-                <p>
-                    Tin nhắn nhiều hơn.
-                    Những câu chuyện dài hơn.
-                    Và rồi anh bắt đầu mong đến lúc được nói chuyện với em mỗi ngày.
-                </p>
+            <p>
+                Và rồi cứ thế, thời gian trôi qua.
+                Tình cảm ấy cũng chỉ được để lại trong lòng
+                vì sự xa cách bởi cuộc sống, công việc của mỗi người.
+            </p>
+
+            <p style="margin-top:20px;">
+                Trước hết thì chỉ dám kết bạn Facebook.
+                Và cứ thế, chỉ là hai người có friend trên Facebook thôi.
+            </p>
+
+        </div>
+
+
+        <div class="story-block reveal">
+
+            <div class="story-label">
+                Một buổi chiều
             </div>
 
-            <div class="event">
-                <div class="date">MỖI NGÀY</div>
-                <h3>Những cuộc gọi không muốn kết thúc</h3>
-                <p>
-                    Có những lúc chẳng cần nói gì nhiều.
-                    Chỉ cần biết ở đầu dây bên kia vẫn còn có em.
-                    Thế là đủ.
-                </p>
+            <p>
+                Bảy năm sau, trong một buổi chiều,
+                đột nhiên khi lướt lại những kỉ niệm ngày xưa
+                vì nhớ lại khoảng thời gian tuổi trẻ,
+                em đã thấy chị.
+            </p>
+
+            <div class="emphasis">
+                Người con gái mà mình từng âm thầm crush.
             </div>
 
-            <div class="event">
-                <div class="date">NHỮNG ĐÊM</div>
-                <h3>Để máy gọi đến sáng</h3>
-                <p>
-                    Anh gọi em ngủ.
-                    Rồi sáng hôm sau lại gọi em dậy.
-                    Một việc rất nhỏ thôi,
-                    nhưng chẳng hiểu từ lúc nào nó trở thành điều anh mong chờ.
-                </p>
+        </div>
+
+
+        <div class="story-block reveal">
+
+            <div class="story-label">
+                11.07.2026
+            </div>
+
+            <p>
+                Ngày em bắt đầu lấy hết dũng khí
+                để rep story của chị.
+            </p>
+
+            <div class="emphasis">
+                Và em đã chờ một câu rep từ chị.
+            </div>
+
+            <p>
+                Em cứ nghĩ rằng mình sẽ không được chị rep lại.
+                Nhưng rồi thời gian trôi qua,
+                hai đứa mình đã có thể kể cho nhau nghe
+                về câu chuyện của mỗi người,
+                kể về mỗi ngày của chúng ta.
+            </p>
+
+        </div>
+
+
+        <div class="story-block reveal">
+
+            <div class="story-label">
+                Và rồi...
+            </div>
+
+            <p>
+                Em chưa bao giờ nghĩ mình có thể thoải mái
+                nói chuyện với ai mà mình chưa từng có cơ hội
+                nói chuyện bên ngoài.
+            </p>
+
+            <div class="emphasis">
+                Thế mà với Hà Phương Anh thì khác.
+            </div>
+
+            <p>
+                Chỉ mới bắt đầu câu chuyện
+                mà như có cả tỷ câu chuyện muốn kể cho chị nghe,
+                và muốn chị thoải mái kể cả tỷ câu chuyện
+                của chị cho em nghe.
+            </p>
+
+            <div class="emphasis">
+                Và mỗi ngày như thế,
+                Phạm Minh Ánh lại yêu Hà Phương Anh thêm nhiều chút.
             </div>
 
         </div>
@@ -651,103 +1067,49 @@ section {
 </section>
 
 
-<!-- =========================
-     CALL
-========================= -->
+<!-- =======================================================
+     2. FEELINGS
+======================================================= -->
 
-<section class="call-section">
+<section id="feelings">
 
-    <div class="call-inner">
+    <div class="safe-zone">
 
-        <div class="small">CHAPTER II</div>
-
-        <div class="call-title">
-            Có những mối quan hệ<br>
-            bắt đầu trước cả khi<br>
-            người ta gọi tên nó.
+        <div class="chapter-number reveal">
+            CHƯƠNG II
         </div>
 
-        <div class="phone-line"></div>
+        <h1 class="chapter-title reveal">
+            Khi em bắt đầu<br>
+            có tình cảm
+        </h1>
 
-        <p class="call-text">
-            Chúng mình gọi nhau là “vợ”, là “người yêu”.
-            <br><br>
-            Em vẫn cười rồi hỏi:
-            <br>
-            <em>“Ny hồi nào?”</em>
-            <br><br>
-            Còn anh thì cứ trốn tránh câu trả lời
-            bằng cách nói sang một chuyện khác.
-            <br><br>
-            Nhưng thật ra...
-            anh biết em đang chờ một câu trả lời nghiêm túc.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     LETTER
-========================= -->
-
-<section class="letter-section">
-
-    <div class="letter">
-
-        <div class="letter-date">
-            19 tháng 8, 2026
+        <div class="safe-zone-text reveal">
+            Càng nói chuyện,
+            em lại càng muốn người con gái này
+            phải là của mình.
         </div>
 
-        <h2>Gửi em,</h2>
+        <div class="safe-zone-note reveal">
 
-        <p>
-            Trước giờ anh vẫn luôn nghĩ rằng tình yêu phải bắt đầu
-            bằng một khoảnh khắc thật lớn lao.
-            Một nơi thật đẹp. Một câu nói thật hoàn hảo.
-        </p>
+            Phải yêu được yêu thương,
+            và mình nhất định sẽ là người khiến cô ấy
+            luôn hạnh phúc.
 
-        <p>
-            Nhưng rồi anh gặp em.
-        </p>
+            <br><br>
 
-        <p>
-            Và anh nhận ra đôi khi tình yêu bắt đầu
-            từ những điều rất nhỏ:
-            một cuộc gọi mỗi tối,
-            một câu chúc ngủ ngon,
-            một người chờ người kia gọi dậy,
-            hay chỉ đơn giản là
-            <span class="highlight">muốn được nghe giọng của nhau thêm một chút nữa.</span>
-        </p>
+            Là nơi cô ấy có thể thoải mái chia sẻ mọi thứ,
+            làm mọi điều mà cô ấy muốn
+            mà không một chút ngại ngùng,
+            gượng gạo.
 
-        <p>
-            Anh biết khoảng cách giữa chúng mình không gần.
-            Anh cũng biết phía trước sẽ có những ngày bận rộn,
-            những lúc nhớ nhau,
-            những lúc không thể ở cạnh nhau ngay khi mình muốn.
-        </p>
+            <br><br>
 
-        <p>
-            Nhưng nếu người ở đầu bên kia vẫn là em,
-            thì anh nghĩ những điều đó đều đáng để cố gắng.
-        </p>
+            Một nơi mà người ta hay gọi là
+            <strong>safe zone</strong>,
+            <strong>comfortable zone</strong>
+            của một người.
 
-        <p>
-            Anh không hứa rằng mình sẽ luôn làm mọi thứ thật hoàn hảo.
-            Nhưng anh có thể hứa rằng,
-            khi em cần một người ở bên,
-            <span class="highlight">anh sẽ cố gắng là người đó.</span>
-        </p>
-
-        <p>
-            Cho tâm tình của anh ở lại nơi em,
-            từng ngày, từng ngày nhé.
-        </p>
-
-        <div class="signature">
-            — Anh
         </div>
 
     </div>
@@ -755,70 +1117,981 @@ section {
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
+     3. LOVE
+======================================================= -->
+
+<section id="love">
+
+    <div class="container">
+
+        <div class="love-intro reveal">
+
+            <div class="chapter-number">
+                CHƯƠNG III
+            </div>
+
+            <h1 class="chapter-title">
+                Những điều em yêu ở chị
+            </h1>
+
+            <div class="divider"></div>
+
+            <p>
+                Để mà nói thì khi đã yêu rồi,
+                mọi thứ của chị đối với em đều rất trân quý.
+            </p>
+
+            <p>
+                Yêu chị từ những điều nhỏ nhất
+                đến những mong ước lớn lao của chị.
+            </p>
+
+            <p>
+                Yêu chị khi chị thoải mái như một em bé bên cạnh em,
+                hay là một AM trong lúc làm việc,
+                người đứng trên bao nhiêu nhân viên.
+            </p>
+
+        </div>
+
+
+        <div class="three-things">
+
+            <div class="love-card reveal">
+                <div class="number">01</div>
+                <p>
+                    Một Hà Phương Anh
+                    thoải mái như một em bé
+                    khi ở bên em.
+                </p>
+            </div>
+
+            <div class="love-card reveal">
+                <div class="number">02</div>
+                <p>
+                    Một Hà Phương Anh
+                    mạnh mẽ và bản lĩnh
+                    trong công việc.
+                </p>
+            </div>
+
+            <div class="love-card reveal">
+                <div class="number">03</div>
+                <p>
+                    Một Hà Phương Anh
+                    luôn cho em cơ hội
+                    được biết thêm về chị.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="one-thing reveal">
+
+            Thật ra thì chỉ có duy nhất một điều
+            em muốn được đồng hành cùng chị.
+
+            <br><br>
+
+            <strong>
+                Đó chính là vì Hà Phương Anh
+                chính là cô ấy.
+            </strong>
+
+        </div>
+
+
+        <div class="body-text center reveal">
+
+            Cô ấy là con người thật của cô ấy,
+            mà không phải gồng mình khi ở cạnh em.
+
+            <br><br>
+
+            Một Hà Phương Anh luôn thoải mái
+            thể hiện những khía cạnh mới mỗi ngày,
+            để em có cơ hội được biết về người em yêu
+            nhiều hơn.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     4. LONG DISTANCE
+======================================================= -->
+
+<section id="distance">
+
+    <div class="distance-container">
+
+        <div class="chapter-number reveal">
+            CHƯƠNG IV
+        </div>
+
+        <h1 class="chapter-title reveal">
+            Về chuyện<br>
+            yêu xa
+        </h1>
+
+
+        <div class="distance-text">
+
+            <p class="reveal">
+                Em biết có một điều chị vẫn còn lo.
+            </p>
+
+            <p class="reveal">
+                Đó là khoảng cách.
+            </p>
+
+            <p class="reveal">
+                Em biết chị cũng từng nghĩ về những ngày
+                chúng mình không thể gặp nhau,
+                về những lúc nhớ nhau nhưng chẳng thể ở cạnh nhau,
+                về những ngày cả hai đều bận đến mức
+                chỉ có thể nghe giọng nhau qua một cuộc gọi ngắn.
+            </p>
+
+            <p class="reveal">
+                Có lẽ chị cũng từng tự hỏi rằng liệu một tình cảm
+                đang đẹp như thế này có thể giữ được
+                khi chúng mình phải xa nhau lâu đến vậy không.
+            </p>
+
+
+            <div class="strong reveal">
+                Và em muốn nói với chị rằng:
+                <br>
+                Em hiểu nỗi lo ấy.
+            </div>
+
+
+            <p class="reveal">
+                Em không nghĩ yêu xa là chuyện dễ dàng.
+            </p>
+
+            <p class="reveal">
+                Em cũng không muốn nói với chị rằng
+                chỉ cần yêu nhau thì mọi thứ sẽ tự nhiên ổn.
+                Em biết sẽ có những ngày chúng mình nhớ nhau
+                đến mức thấy khoảng cách thật đáng ghét.
+            </p>
+
+            <p class="reveal">
+                Sẽ có những lúc một cái ôm trở thành điều xa xỉ.
+                Những lúc em chỉ muốn được ở ngay bên cạnh chị,
+                xoa đầu chị, ôm chị vào lòng
+                và vỗ về chị khi chị mệt mỏi,
+                nhưng em lại không thể.
+            </p>
+
+            <p class="reveal">
+                Và có lẽ đó sẽ là những lúc em cảm thấy bất lực nhất —
+                khi người em yêu đang cần một cái ôm,
+                mà điều duy nhất em có thể làm
+                lại chỉ là ở bên chị qua một chiếc điện thoại.
+            </p>
+
+            <p class="reveal">
+                Em biết có những điều,
+                dù cố gắng đến đâu,
+                em cũng không thể thay thế được
+                sự hiện diện của một người ở ngay bên cạnh.
+            </p>
+
+
+            <div class="strong reveal">
+                Nhưng em nghĩ tình yêu không phải là việc
+                mình tìm được một người khiến mình
+                không còn sợ bất cứ điều gì.
+            </div>
+
+            <p class="reveal">
+                Mà là khi mình biết mình sẽ sợ,
+                biết con đường phía trước có thể khó,
+                nhưng vẫn có một người khiến mình muốn bước tiếp.
+            </p>
+
+            <div class="strong reveal">
+                Và với em,
+                chị chính là người đó.
+            </div>
+
+
+            <p class="reveal">
+                Em không muốn hứa với chị
+                rằng những tháng sắp tới sẽ luôn dễ dàng.
+            </p>
+
+            <p class="reveal">
+                Em không thể hứa rằng chúng mình sẽ không có lúc
+                nhớ nhau, tủi thân, giận nhau,
+                hay có những ngày cảm thấy khoảng cách thật dài.
+            </p>
+
+            <p class="reveal">
+                Nhưng em có thể chắc chắn một điều:
+            </p>
+
+            <div class="strong reveal">
+                Em không muốn coi khoảng cách
+                là lý do để buông tay.
+            </div>
+
+
+            <div class="waiting reveal">
+
+                <div class="day-counter">
+                    Có thể chúng mình còn phải đi qua
+                    một vài tháng nữa
+                    mới có thể đứng trước mặt nhau.
+                </div>
+
+                <br>
+
+                <p>
+                    Một vài tháng ấy nghe thật dài.
+                </p>
+
+                <br>
+
+                <p>
+                    Nhưng em không muốn đếm nó bằng những ngày
+                    mình không được gặp nhau.
+                </p>
+
+                <br>
+
+                <div class="tiny">
+                    Em muốn đếm nó bằng những ngày
+                    chúng mình đã cùng nhau cố gắng.
+                </div>
+
+                <br><br>
+
+                <p>
+                    Hôm nay là một ngày.
+                </p>
+
+                <p>
+                    Ngày mai thêm một ngày.
+                </p>
+
+            </div>
+
+
+            <p class="reveal">
+                Rồi sẽ có một ngày,
+                em không còn phải nhìn chị qua màn hình nữa.
+            </p>
+
+            <p class="reveal">
+                Em có thể đứng trước mặt chị,
+                nhìn chị thật lâu,
+                rồi nói những điều mà hôm nay
+                em chỉ có thể viết ra ở đây.
+            </p>
+
+            <div class="strong reveal">
+                Và em nghĩ,
+                nếu người em chờ ngày hôm đó là chị,
+                thì chờ thêm một chút cũng đáng.
+            </div>
+
+
+            <p class="reveal">
+                Em đã nghĩ về chuyện này rất nhiều.
+            </p>
+
+            <p class="reveal">
+                Không phải chỉ nghĩ về những ngày chúng mình vui vẻ,
+                mà cả những ngày khó khăn có thể sẽ đến.
+            </p>
+
+            <p class="reveal">
+                Em nghĩ về khoảng cách.
+                Nghĩ về nỗi nhớ.
+                Nghĩ về những lúc chúng mình không thể ở cạnh nhau.
+                Nghĩ cả về những điều có thể khiến chị lo.
+            </p>
+
+            <p class="reveal">
+                Và càng nghĩ,
+                em càng nhận ra mình không muốn đưa ra
+                một quyết định chỉ vì sợ hãi.
+            </p>
+
+            <p class="reveal">
+                Nếu em từ bỏ chỉ vì chúng mình ở xa,
+                có lẽ sau này điều em tiếc nhất
+                không phải là khoảng cách.
+            </p>
+
+            <div class="strong reveal">
+                Mà là việc em đã có một người
+                mình thật lòng muốn yêu,
+                nhưng lại không đủ can đảm để thử.
+            </div>
+
+            <p class="reveal">
+                Em không muốn sau này phải tự hỏi:
+            </p>
+
+            <div class="tiny reveal">
+                “Nếu ngày đó mình bước về phía chị thì sao?”
+            </div>
+
+            <p class="reveal">
+                Nên hôm nay,
+                em muốn bước một bước về phía chị.
+            </p>
+
+            <p class="reveal">
+                Không phải vì em chắc chắn
+                rằng mọi thứ sẽ hoàn hảo.
+            </p>
+
+            <div class="strong reveal">
+                Mà vì em chắc chắn
+                rằng em muốn thử cùng chị.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     5. PROMISES
+======================================================= -->
+
+<section id="promises">
+
+    <div class="container">
+
+        <div class="promise-intro reveal">
+
+            <div class="chapter-number">
+                CHƯƠNG V
+            </div>
+
+            <h1 class="chapter-title">
+                Những điều em muốn hứa
+            </h1>
+
+            <div class="divider"></div>
+
+            <p>
+                Em không thể hứa rằng mình sẽ luôn biết cách
+                làm chị hết buồn.
+            </p>
+
+            <p>
+                Nhưng em muốn hứa rằng
+                chị sẽ không phải một mình
+                với những điều đó.
+            </p>
+
+        </div>
+
+
+        <div class="promise reveal">
+
+            <div class="promise-number">
+                LỜI HỨA 01
+            </div>
+
+            <h3>
+                Khi chị buồn
+            </h3>
+
+            <p>
+                Em hứa rằng em sẽ không để chị phải một mình
+                với nỗi buồn ấy.
+                Nếu có một ngày chị mệt,
+                chị tủi thân,
+                hay chỉ đơn giản là nhớ em rất nhiều,
+                chị cứ nói với em.
+                Em sẽ nghe.
+            </p>
+
+            <p style="margin-top:20px;">
+                Có thể em không thể ngay lập tức xuất hiện
+                trước mặt chị,
+                không thể ôm chị vào lòng như điều em muốn.
+                Nhưng em sẽ ở đó.
+                Bằng một cuộc gọi,
+                một tin nhắn,
+                hay bất cứ cách nào em có thể.
+            </p>
+
+        </div>
+
+
+        <div class="promise reveal">
+
+            <div class="promise-number">
+                LỜI HỨA 02
+            </div>
+
+            <h3>
+                Khi chúng mình không hiểu nhau
+            </h3>
+
+            <p>
+                Em hứa nếu có ngày chúng mình không hiểu nhau,
+                em sẽ không chọn im lặng để chị phải tự đoán
+                xem em đang nghĩ gì.
+            </p>
+
+            <p style="margin-top:20px;">
+                Em muốn chúng mình nói chuyện.
+                Nói cả những điều dễ nói
+                và những điều khó nói.
+            </p>
+
+            <p style="margin-top:20px;">
+                Em không muốn một khoảng lặng
+                biến thành khoảng cách giữa hai đứa.
+            </p>
+
+        </div>
+
+
+        <div class="promise reveal">
+
+            <div class="promise-number">
+                LỜI HỨA 03
+            </div>
+
+            <h3>
+                Em muốn được hiện diện
+            </h3>
+
+            <p>
+                Em hứa rằng dù chúng mình ở cách nhau bao xa,
+                em vẫn sẽ cố gắng để chị cảm nhận được
+                rằng em đang ở trong cuộc sống của chị.
+            </p>
+
+            <p style="margin-top:20px;">
+                Em muốn biết ngày hôm nay của chị thế nào.
+                Muốn nghe chị kể những chuyện rất nhỏ.
+                Muốn kể chị nghe những chuyện xảy ra với em.
+            </p>
+
+            <p style="margin-top:20px;">
+                Em muốn được hiện diện
+                trong những điều bình thường nhất
+                của cuộc sống chị.
+            </p>
+
+        </div>
+
+
+        <div class="promise reveal">
+
+            <div class="promise-number">
+                LỜI HỨA 04
+            </div>
+
+            <h3>
+                Cùng chờ
+            </h3>
+
+            <p>
+                Em hứa sẽ không để chị một mình
+                đếm những ngày còn lại.
+            </p>
+
+            <p style="margin-top:20px;">
+                Chúng mình cùng chờ.
+                Cùng đếm.
+                Cùng nghĩ về ngày được gặp nhau.
+            </p>
+
+            <p style="margin-top:20px;">
+                Và đến ngày đó,
+                em muốn mình có thể nhìn nhau và nói:
+            </p>
+
+            <p style="margin-top:20px;font-family:'Cormorant Garamond',serif;font-size:25px;color:#693940;">
+                “Cuối cùng thì chúng mình cũng làm được rồi.”
+            </p>
+
+        </div>
+
+
+        <div class="promise reveal">
+
+            <div class="promise-number">
+                LỜI HỨA 05
+            </div>
+
+            <h3>
+                Những điều rất nhỏ
+            </h3>
+
+            <p>
+                Em muốn trân trọng những điều rất nhỏ giữa chúng mình.
+            </p>
+
+            <p style="margin-top:20px;">
+                Những cuộc gọi mỗi tối.
+                Những câu chúc ngủ ngon.
+                Những lần chị nũng nịu.
+                Những câu chuyện chẳng có gì đặc biệt
+                nhưng hai đứa vẫn muốn kể cho nhau nghe.
+            </p>
+
+            <p style="margin-top:20px;">
+                Có thể sau này chúng mình sẽ có những ngày
+                được ở cạnh nhau rất lâu.
+            </p>
+
+            <p style="margin-top:20px;">
+                Nhưng em vẫn muốn nhớ rằng
+                đã từng có một khoảng thời gian,
+                chỉ cần được nghe giọng chị thôi
+                cũng đủ làm một ngày của em trở nên dễ chịu hơn,
+                như được sạc pin sau một ngày học tập,
+                làm việc thật dài.
+            </p>
+
+        </div>
+
+
+        <div class="promise reveal">
+
+            <div class="promise-number">
+                LỜI HỨA 06
+            </div>
+
+            <h3>
+                Cùng giữ lấy nhau
+            </h3>
+
+            <p>
+                Em không muốn chị phải là người duy nhất
+                cố gắng để giữ tình yêu này.
+            </p>
+
+            <p style="margin-top:20px;">
+                Nếu chúng mình trở thành một đôi,
+                thì đây sẽ là chuyện của cả hai.
+            </p>
+
+            <p style="margin-top:20px;">
+                Khi khoảng cách khó khăn,
+                em sẽ bước về phía chị.
+                Khi chị mệt,
+                em sẽ tìm cách ở bên chị.
+                Khi em mệt,
+                em cũng sẽ nói với chị.
+            </p>
+
+            <p style="margin-top:20px;">
+                Em muốn chúng mình có thể dựa vào nhau,
+                chứ không phải một người cứ cố gắng mạnh mẽ
+                còn người kia chỉ đứng nhìn.
+            </p>
+
+        </div>
+
+
+        <div class="promise-final reveal">
+
+            <p>
+                Em không hứa rằng em sẽ là
+                một người yêu hoàn hảo.
+            </p>
+
+            <p style="margin-top:25px;">
+                <strong>
+                    Em chỉ hứa rằng em sẽ là
+                    một người yêu thật lòng.
+                </strong>
+            </p>
+
+            <p style="margin-top:30px;">
+                Một người khiến chị luôn thấy bản thân
+                như một đứa trẻ,
+                thỏa sức thể hiện mọi khía cạnh.
+            </p>
+
+            <p style="margin-top:30px;">
+                Một người chị thấy an toàn
+                và an tâm khi ở bên.
+            </p>
+
+            <p style="margin-top:40px;">
+                Khi vui sẽ muốn kể cho chị nghe.
+                <br>
+                Khi buồn sẽ tìm về phía chị.
+                <br>
+                Khi có vấn đề sẽ ở lại để cùng chị giải quyết.
+            </p>
+
+            <p style="margin-top:40px;">
+                Và khi khoảng cách khiến chị thấy mệt mỏi,
+                em sẽ nhắc chị rằng:
+            </p>
+
+            <p style="margin-top:20px;">
+                <strong>
+                    “Mình đang cùng nhau đi qua nó.”
+                </strong>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     6. SECRET
+======================================================= -->
+
+<section id="secret">
+
+    <div class="secret-container">
+
+        <div class="chapter-number reveal">
+            CHƯƠNG VI
+        </div>
+
+        <h1 class="chapter-title reveal">
+            Điều em chưa bao giờ nói
+        </h1>
+
+
+        <div class="secret-text">
+
+            <p class="reveal">
+                Em có thể mất rất lâu để mở cửa
+                cho một người bước vào.
+            </p>
+
+            <p class="reveal">
+                Nhưng một khi em đã mở cửa,
+                em không muốn người ấy chỉ đi ngang qua cuộc đời mình.
+            </p>
+
+            <p class="reveal">
+                Em sẽ bắt đầu nghĩ về người ấy
+                trong những kế hoạch của mình.
+            </p>
+
+            <p class="reveal">
+                Nghĩ đến chị khi nghe một bài hát.
+            </p>
+
+            <p class="reveal">
+                Nhìn thấy một điều dễ thương.
+            </p>
+
+            <p class="reveal">
+                Đi qua một nơi thật đẹp.
+            </p>
+
+            <p class="reveal">
+                Hay đơn giản là khi có một chuyện rất nhỏ
+                xảy ra trong ngày và phản xạ đầu tiên của em lại là:
+            </p>
+
+
+            <div class="secret-quote reveal">
+                “Không biết nếu kể cho chị
+                thì chị sẽ phản ứng thế nào nhỉ?”
+            </div>
+
+
+            <p class="reveal">
+                Và em nghĩ,
+                đó chính là lúc một người đã trở nên đặc biệt.
+            </p>
+
+        </div>
+
+
+        <div class="name-reveal reveal">
+
+            <div class="name-intro">
+                Và người ấy là...
+            </div>
+
+            <div class="her-name">
+                Hà Phương Anh
+            </div>
+
+            <div class="secret-ending">
+                Có lẽ chị đã bước vào những suy nghĩ của em
+                từ lúc nào mà chính em cũng không nhận ra.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
      FLOWER
-========================= -->
+======================================================= -->
 
-<section class="flower-section">
+<section id="flower">
 
-    <div class="flower">🌷</div>
+    <div class="container center reveal">
 
-    <h2>
-        Có lẽ vì thế<br>
-        anh đã chọn những bông hoa này cho em.
-    </h2>
+        <div class="flower-symbol">
+            🌷
+        </div>
 
-    <p>
-        Không phải vì chúng là những bông hoa đẹp nhất trên đời.
-        <br><br>
-        Mà vì anh muốn chúng giống điều anh muốn nói:
-        <br>
-        <strong>
-            dịu dàng, chân thành,
-            và từ từ nở rộ theo thời gian.
-        </strong>
-    </p>
+        <div class="flower-text">
+            Có một bó hoa dành cho chị.
+        </div>
+
+        <div class="flower-note">
+            Không phải vì em nghĩ một bó hoa có thể nói thay tất cả.
+            <br>
+            Chỉ là em muốn ngày hôm nay
+            có một thứ gì đó thật đẹp
+            đứng cạnh những điều em muốn nói.
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
-     FINAL QUESTION
-========================= -->
+<!-- =======================================================
+     7. PROPOSAL
+======================================================= -->
 
-<section id="question">
+<section id="proposal">
 
-    <div class="question-inner">
+    <div class="proposal-container">
 
-        <div class="question-small">
-            VÀ ĐIỀU CUỐI CÙNG ANH MUỐN HỎI
+        <div class="proposal-small reveal">
+            19.08.2026
         </div>
 
-        <h1>Em à...</h1>
+        <div class="proposal-title reveal">
+            Chị à...
+        </div>
 
-        <h2>
-            Mình thôi gọi nhau<br>
-            là “người yêu hồi nào” nhé?
-        </h2>
 
-        <p class="question-text">
-            Vì hôm nay anh muốn hỏi em một cách thật nghiêm túc.
-            <br><br>
-            Không phải trong một câu đùa.
-            Không phải giữa một cuộc gọi.
-            Không phải để em phải đoán nữa.
-        </p>
+        <div class="proposal-text">
 
-        <div class="buttons">
+            <p class="reveal">
+                Có lẽ chị đã chờ câu này lâu hơn em nghĩ.
+            </p>
 
-            <button class="yes-btn" onclick="sayYes()">
+            <p class="reveal">
+                Có những lần em gọi chị là người yêu,
+                rồi chị lại cười và hỏi:
+            </p>
+
+            <div class="quote reveal">
+                “Ny hồi nào?”
+            </div>
+
+            <p class="reveal">
+                Em biết.
+            </p>
+
+            <p class="reveal">
+                Em biết chị đang chờ em nói
+                một câu thật nghiêm túc.
+            </p>
+
+            <p class="reveal">
+                Chỉ là em đã cứ lảng tránh và chần chừ.
+            </p>
+
+            <p class="reveal">
+                Có lẽ vì em muốn chắc chắn.
+            </p>
+
+            <p class="reveal">
+                Muốn chắc chắn rằng những gì em cảm nhận
+                không chỉ là một chút rung động nhất thời.
+            </p>
+
+            <p class="reveal">
+                Muốn chắc chắn rằng khi em nói ra câu này,
+                em thật sự nghiêm túc với nó.
+            </p>
+
+            <div class="quote reveal">
+                Và sau tất cả những gì chúng mình đã có với nhau...
+                <br><br>
+                <strong>Em chắc chắn rồi.</strong>
+            </div>
+
+
+            <p class="reveal">
+                Em không muốn chúng mình chỉ là hai người
+                nói chuyện mỗi ngày.
+            </p>
+
+            <p class="reveal">
+                Không muốn những cuộc gọi mỗi tối
+                chỉ là một thói quen.
+            </p>
+
+            <p class="reveal">
+                Không muốn những câu “vợ”, “người yêu”
+                chỉ là những lời trêu đùa
+                mà cả hai đều biết là có một chút thật ở trong đó.
+            </p>
+
+            <p class="reveal">
+                Em muốn chúng mình gọi tên mối quan hệ này
+                một cách thật rõ ràng.
+            </p>
+
+            <p class="reveal">
+                Em muốn được chính thức bước vào cuộc sống của chị.
+            </p>
+
+            <p class="reveal">
+                Muốn được quan tâm chị
+                với tư cách là người yêu của chị.
+            </p>
+
+            <p class="reveal">
+                Muốn khi chị vui,
+                người đầu tiên chị muốn kể có thể là em.
+            </p>
+
+            <p class="reveal">
+                Khi chị mệt,
+                chị biết mình có một người để dựa vào.
+            </p>
+
+            <p class="reveal">
+                Khi chị nhớ em,
+                chị không cần phải giấu.
+            </p>
+
+            <p class="reveal">
+                Và khi em nhớ chị,
+                em cũng có thể nói:
+            </p>
+
+            <div class="quote reveal">
+                “Anh nhớ em.”
+            </div>
+
+            <p class="reveal">
+                Không cần phải giả vờ như đang đùa nữa.
+            </p>
+
+            <p class="reveal">
+                Em biết chúng mình còn phải đi qua khoảng cách.
+                Em biết phía trước sẽ có những ngày không dễ dàng.
+            </p>
+
+            <p class="reveal">
+                Nhưng em đã nghĩ rất nhiều rồi.
+            </p>
+
+            <p class="reveal">
+                Và em nhận ra rằng điều khiến em sợ nhất
+                không phải là yêu xa.
+            </p>
+
+            <div class="quote reveal">
+                Điều khiến em sợ nhất là một ngày nào đó nhìn lại
+                và nhận ra:
+                <br><br>
+                mình đã gặp được một người mình thật lòng muốn yêu,
+                nhưng lại không đủ can đảm để nói rằng
+                mình muốn ở bên người ấy.
+            </div>
+
+            <p class="reveal">
+                Em không muốn ngày đó xảy ra.
+            </p>
+
+            <p class="reveal">
+                Nên hôm nay,
+                em muốn tự mình bước về phía chị.
+            </p>
+
+            <p class="reveal">
+                Không phải với một câu nói đùa.
+            </p>
+
+            <p class="reveal">
+                Không phải trong một cuộc gọi
+                mà cả hai có thể cười rồi chuyển sang một chuyện khác.
+            </p>
+
+            <p class="reveal">
+                Mà là ở đây.
+            </p>
+
+            <p class="reveal">
+                <strong>Thật lòng.</strong>
+            </p>
+
+            <p class="reveal">
+                <strong>Nghiêm túc.</strong>
+            </p>
+
+            <p class="reveal">
+                <strong>Và chỉ dành cho chị.</strong>
+            </p>
+
+        </div>
+
+
+        <div class="final-question">
+
+            <div class="name reveal">
+                Hà Phương Anh,
+            </div>
+
+            <h2 class="reveal">
+                Em muốn hỏi chị một điều.
+            </h2>
+
+            <div class="question-sub reveal">
+                Chị cho phép em có cơ hội
+                trở thành người yêu của chị nhé?
+            </div>
+
+            <div class="question-sub reveal">
+                Chị đồng ý cho chúng ta có thể gọi nhau
+                là <strong>Anh</strong> và <strong>Vợ</strong>
+                một cách đường đường chính chính,
+                mà không phải thỉnh thoảng lại đổi ngôi xưng nữa nhé?
+            </div>
+
+            <button class="yes-button reveal" onclick="sayYes()">
                 Em đồng ý ♡
             </button>
 
-        </div>
+            <div class="wait-note reveal">
+                Không cần trả lời ngay đâu.
+                <br>
+                Chỉ cần biết rằng lần này,
+                những gì em nói đều là thật.
+            </div>
 
-        <div class="love-note">
-            Em làm người yêu anh nhé?
         </div>
 
     </div>
@@ -826,37 +2099,64 @@ section {
 </section>
 
 
-<!-- =========================
-     ENDING
-========================= -->
+<!-- =======================================================
+     8. ENDING
+======================================================= -->
 
 <section id="ending">
 
-    <div class="ending-inner">
+    <div class="ending-container">
 
-        <div class="ending-heart">❤️</div>
+        <div class="ending-heart">
+            ❤️
+        </div>
 
-        <h1>Vậy nhé.</h1>
+        <div class="ending-title">
+            Vậy nhé.
+        </div>
 
-        <h2>
+        <div class="ending-main">
             Từ hôm nay,<br>
-            mình chính thức là người yêu của nhau.
-        </h2>
+            mình cùng nhau đi qua khoảng cách này.
+        </div>
 
-        <p>
-            Cảm ơn em vì đã xuất hiện.
+        <div class="ending-text">
+
+            Khoảng cách vẫn còn đó.
             <br>
-            Cảm ơn em vì đã ở lại.
+            Những tháng chờ đợi vẫn còn đó.
+            <br>
+            Nhưng từ hôm nay,
+            em không còn phải bước về phía chị một mình nữa.
             <br><br>
-            Và cảm ơn em vì từ giờ,
-            anh có thể gọi em là người yêu
-            mà không cần phải hỏi:
+
+            Mình cùng chờ.
+            <br>
+            Cùng cố gắng.
+            <br>
+            Cùng đi về phía ngày được gặp nhau.
+            <br><br>
+
+            Và nếu một ngày nào đó chị hỏi:
             <br>
             <em>“Ny hồi nào?”</em>
-        </p>
+            <br><br>
 
-        <div class="final-sign">
-            Anh yêu em. ♡
+            thì em có thể trả lời rồi.
+            <br><br>
+
+            <strong>
+                Từ ngày 19 tháng 8 năm 2026.
+            </strong>
+
+        </div>
+
+        <div class="ending-sign">
+            Anh yêu Vợ. ♡
+        </div>
+
+        <div class="final-signature">
+            Sến Sẩm của Hà Phương Anh — Phạm Minh Ánh
         </div>
 
     </div>
@@ -866,78 +2166,141 @@ section {
 
 <script>
 
-/* =========================
-   OPEN STORY
-========================= */
+/* =========================================================
+   SMOOTH NAVIGATION
+========================================================= */
 
-function openStory() {
+function goTo(id){
 
-    document.getElementById("story").scrollIntoView({
-        behavior: "smooth"
+    const target = document.getElementById(id);
+
+    target.scrollIntoView({
+        behavior:"smooth"
     });
 
-    createHearts(8);
 }
 
 
-/* =========================
-   FLOATING HEARTS
-========================= */
+/* =========================================================
+   REVEAL ON SCROLL
+========================================================= */
 
-function createHeart() {
+const observer = new IntersectionObserver(
 
-    const heart = document.createElement("div");
+    entries => {
 
-    heart.className = "heart";
+        entries.forEach(entry => {
 
-    const hearts = ["♡", "♥", "♡", "❤"];
-    heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+            if(entry.isIntersecting){
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (10 + Math.random() * 14) + "px";
-    heart.style.animationDuration = (5 + Math.random() * 6) + "s";
+                entry.target.classList.add("visible");
 
-    document.body.appendChild(heart);
+            }
 
-    setTimeout(() => {
-        heart.remove();
-    }, 12000);
-}
-
-function createHearts(amount = 4) {
-
-    for (let i = 0; i < amount; i++) {
-        setTimeout(createHeart, i * 180);
-    }
-}
-
-setInterval(() => {
-    createHeart();
-}, 1800);
-
-
-/* =========================
-   SAY YES
-========================= */
-
-function sayYes() {
-
-    createHearts(35);
-
-    setTimeout(() => {
-
-        document.getElementById("question").style.display = "none";
-
-        const ending = document.getElementById("ending");
-
-        ending.style.display = "flex";
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
         });
 
-    }, 900);
+    },
+
+    {
+        threshold:0.12
+    }
+
+);
+
+document.querySelectorAll(".reveal").forEach(el => {
+
+    observer.observe(el);
+
+});
+
+
+/* =========================================================
+   PETALS
+========================================================= */
+
+function createPetal(){
+
+    const petal = document.createElement("div");
+
+    petal.className = "petal";
+
+    const symbols = ["♡","❀","✿","·"];
+
+    petal.innerText =
+        symbols[Math.floor(Math.random()*symbols.length)];
+
+    petal.style.left =
+        Math.random()*100 + "vw";
+
+    petal.style.fontSize =
+        (9 + Math.random()*12) + "px";
+
+    petal.style.animationDuration =
+        (8 + Math.random()*8) + "s";
+
+    petal.style.color =
+        Math.random() > .5
+        ? "#c98b92"
+        : "#dfb7b9";
+
+    document.body.appendChild(petal);
+
+    setTimeout(() => {
+
+        petal.remove();
+
+    },16000);
+
+}
+
+
+/* =========================================================
+   GENTLE PETALS
+========================================================= */
+
+setInterval(() => {
+
+    if(document.visibilityState === "visible"){
+
+        createPetal();
+
+    }
+
+},2600);
+
+
+/* =========================================================
+   YES BUTTON
+========================================================= */
+
+function sayYes(){
+
+    for(let i=0;i<35;i++){
+
+        setTimeout(() => {
+
+            createPetal();
+
+        },i*70);
+
+    }
+
+    setTimeout(() => {
+
+        document.getElementById("proposal").style.display="none";
+
+        const ending =
+            document.getElementById("ending");
+
+        ending.style.display="flex";
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    },1100);
+
 }
 
 </script>
