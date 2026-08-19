@@ -2305,7 +2305,8 @@ function sayYes(){
 
 </script>
 <!-- =====================================================
-     MUSIC SYSTEM — PHẠM MINH ÁNH × HÀ PHƯƠNG ANH
+     MUSIC SYSTEM
+     BÀI 1 → HẾT → BÀI 2
 ===================================================== -->
 
 <audio id="loveMusic1" preload="auto">
@@ -2317,350 +2318,262 @@ function sayYes(){
 </audio>
 
 
-<!-- NÚT NHẠC -->
-<button id="musicButton" aria-label="Bật hoặc tắt nhạc">
-    <span id="musicNote">♫</span>
-    <span id="musicStatus">Bật nhạc</span>
+<!-- MUSIC BUTTON -->
+
+<button id="musicButton" type="button">
+    <span id="musicIcon">♫</span>
+    <span id="musicText">Bật nhạc</span>
 </button>
 
 
 <style>
 
-    /* ==============================
-       MUSIC BUTTON
-    ============================== */
+/* =====================================================
+   MUSIC BUTTON
+===================================================== */
+
+#musicButton {
+
+    position: fixed;
+
+    right: 22px;
+    bottom: 22px;
+
+    z-index: 999999;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 11px 17px;
+
+    border: 1px solid rgba(160, 70, 90, .25);
+
+    border-radius: 999px;
+
+    background: rgba(255, 250, 247, .88);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    color: #8d3e50;
+
+    font-family: "Be Vietnam Pro", sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 30px rgba(100, 40, 55, .12);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+}
+
+
+#musicButton:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 35px rgba(100, 40, 55, .18);
+
+}
+
+
+#musicIcon {
+
+    font-size: 18px;
+
+    line-height: 1;
+
+}
+
+
+#musicButton.playing #musicIcon {
+
+    animation:
+        musicPulse 1.2s ease-in-out infinite;
+
+}
+
+
+@keyframes musicPulse {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+
+@media (max-width: 600px) {
 
     #musicButton {
-        position: fixed;
 
-        right: 22px;
-        bottom: 22px;
+        right: 14px;
+        bottom: 14px;
 
-        z-index: 99999;
+        padding: 9px 13px;
 
-        display: flex;
-        align-items: center;
-        gap: 9px;
-
-        padding: 11px 17px;
-
-        border: 1px solid rgba(255,255,255,.65);
-        border-radius: 999px;
-
-        background: rgba(255,255,255,.78);
-
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-
-        color: #7b3043;
-
-        font-family:
-            "Be Vietnam Pro",
-            sans-serif;
-
-        font-size: 12px;
-
-        cursor: pointer;
-
-        box-shadow:
-            0 8px 30px rgba(80,20,40,.12);
-
-        transition:
-            transform .35s ease,
-            box-shadow .35s ease,
-            background .35s ease;
-    }
-
-
-    #musicButton:hover {
-        transform: translateY(-3px);
-
-        box-shadow:
-            0 12px 35px rgba(80,20,40,.18);
-    }
-
-
-    #musicNote {
-        display: inline-flex;
-
-        width: 20px;
-        height: 20px;
-
-        align-items: center;
-        justify-content: center;
-
-        font-size: 18px;
-    }
-
-
-    #musicButton.playing #musicNote {
-        animation:
-            musicFloat 1.2s ease-in-out infinite;
-    }
-
-
-    @keyframes musicFloat {
-
-        0% {
-            transform: translateY(0) rotate(0deg);
-        }
-
-        25% {
-            transform: translateY(-2px) rotate(-8deg);
-        }
-
-        50% {
-            transform: translateY(0) rotate(0deg);
-        }
-
-        75% {
-            transform: translateY(-2px) rotate(8deg);
-        }
-
-        100% {
-            transform: translateY(0) rotate(0deg);
-        }
+        font-size: 10px;
 
     }
 
+    #musicIcon {
 
-    /* MOBILE */
-
-    @media (max-width: 600px) {
-
-        #musicButton {
-
-            right: 14px;
-            bottom: 14px;
-
-            padding: 9px 13px;
-
-            font-size: 10px;
-
-        }
-
-        #musicNote {
-            font-size: 16px;
-        }
+        font-size: 16px;
 
     }
+
+}
 
 </style>
 
 
 <script>
 
+/* =====================================================
+   LOVE MUSIC SYSTEM
+===================================================== */
+
 (function () {
 
-    /* =====================================================
-       SETTINGS
-    ===================================================== */
 
-    const FIRST_VOLUME = 0.38;
-    const SECOND_VOLUME = 0.42;
-
-    const FADE_TIME = 2200;
-
-
-    /* =====================================================
+    /* -------------------------------------------------
        AUDIO
-    ===================================================== */
+    ------------------------------------------------- */
 
-    const music1 =
+    const song1 =
         document.getElementById("loveMusic1");
 
-    const music2 =
+    const song2 =
         document.getElementById("loveMusic2");
 
 
-    const musicButton =
+    const button =
         document.getElementById("musicButton");
 
-    const musicNote =
-        document.getElementById("musicNote");
+    const icon =
+        document.getElementById("musicIcon");
 
-    const musicStatus =
-        document.getElementById("musicStatus");
+    const text =
+        document.getElementById("musicText");
 
 
-    let currentMusic = null;
+    /* -------------------------------------------------
+       SETTINGS
+    ------------------------------------------------- */
+
+    const SONG1_VOLUME = 0.38;
+
+    const SONG2_VOLUME = 0.42;
+
+    const FADE_TIME = 2500;
+
+
+    let currentSong = null;
 
     let musicStarted = false;
 
-    let music2Started = false;
+    let userPaused = false;
 
-    let isSwitching = false;
-
-
-    /* =====================================================
-       INITIAL VOLUME
-    ===================================================== */
-
-    music1.volume = 0;
-    music2.volume = 0;
+    let switching = false;
 
 
-    /* =====================================================
-       FADE IN
-    ===================================================== */
+    /* -------------------------------------------------
+       INITIAL STATE
+    ------------------------------------------------- */
 
-    function fadeIn(audio, targetVolume, duration) {
+    song1.volume = SONG1_VOLUME;
 
-        audio.volume = 0;
-
-        const steps = 40;
-
-        const interval =
-            duration / steps;
-
-        const amount =
-            targetVolume / steps;
-
-        let step = 0;
+    song2.volume = SONG2_VOLUME;
 
 
-        const timer = setInterval(function () {
-
-            step++;
-
-            audio.volume =
-                Math.min(
-                    targetVolume,
-                    amount * step
-                );
-
-
-            if (step >= steps) {
-
-                clearInterval(timer);
-
-            }
-
-        }, interval);
-
-    }
-
-
-    /* =====================================================
-       FADE OUT
-    ===================================================== */
-
-    function fadeOut(audio, duration) {
-
-        const startVolume =
-            audio.volume;
-
-        const steps = 40;
-
-        const interval =
-            duration / steps;
-
-        const amount =
-            startVolume / steps;
-
-        let step = 0;
-
-
-        const timer = setInterval(function () {
-
-            step++;
-
-            audio.volume =
-                Math.max(
-                    0,
-                    startVolume -
-                    amount * step
-                );
-
-
-            if (step >= steps) {
-
-                clearInterval(timer);
-
-                audio.pause();
-
-            }
-
-        }, interval);
-
-    }
-
-
-    /* =====================================================
+    /* =================================================
        UPDATE BUTTON
-    ===================================================== */
+    ================================================= */
 
     function updateButton() {
 
         if (
-            currentMusic &&
-            !currentMusic.paused
+            currentSong &&
+            !currentSong.paused
         ) {
 
-            musicButton.classList.add(
-                "playing"
-            );
+            button.classList.add("playing");
 
-            musicNote.textContent = "♫";
+            icon.textContent = "♫";
 
-            if (currentMusic === music2) {
-
-                musicStatus.textContent =
-                    "Thế giới của anh";
-
-            } else {
-
-                musicStatus.textContent =
-                    "Đang phát";
-
-            }
+            text.textContent = "Nhạc đang phát";
 
         } else {
 
-            musicButton.classList.remove(
-                "playing"
-            );
+            button.classList.remove("playing");
 
-            musicNote.textContent = "♪";
+            icon.textContent = "♪";
 
-            musicStatus.textContent =
-                "Bật nhạc";
+            text.textContent = "Bật nhạc";
 
         }
 
     }
 
 
-    /* =====================================================
+    /* =================================================
        START SONG 1
-    ===================================================== */
+    ================================================= */
 
-    function startFirstSong() {
+    function startSong1() {
 
         if (musicStarted) return;
 
         musicStarted = true;
 
-        currentMusic = music1;
+        userPaused = false;
 
-        music1.currentTime = 0;
-
-        music1.volume = 0;
+        currentSong = song1;
 
 
-        music1.play()
+        song1.currentTime = 0;
+
+        song1.volume = SONG1_VOLUME;
+
+
+        song2.pause();
+
+        song2.currentTime = 0;
+
+
+        song1.play()
+
             .then(function () {
-
-                fadeIn(
-                    music1,
-                    FIRST_VOLUME,
-                    FADE_TIME
-                );
 
                 updateButton();
 
+                console.log(
+                    "🎵 Bắt đầu bài 1"
+                );
+
             })
-            .catch(function () {
+
+            .catch(function (error) {
+
+                console.log(
+                    "Không thể phát bài 1:",
+                    error
+                );
 
                 musicStarted = false;
 
@@ -2669,122 +2582,261 @@ function sayYes(){
     }
 
 
-    /* =====================================================
-       SWITCH TO SONG 2
-    ===================================================== */
+    /* =================================================
+       FADE OUT SONG 1
+    ================================================= */
 
-function switchToSecondSong() {
+    function fadeOutSong1() {
 
-    if (isSwitching) return;
+        if (switching) return;
 
-    isSwitching = true;
-    music2Started = true;
+        switching = true;
 
-    console.log("Đã đến phần tỏ tình → chuyển sang bài 2");
 
-    // Fade bài 1
-    const fadeOutInterval = setInterval(() => {
+        const startVolume =
+            song1.volume;
 
-        music1.volume = Math.max(
-            0,
-            music1.volume - 0.02
-        );
+        const startTime =
+            performance.now();
 
-        if (music1.volume <= 0) {
 
-            clearInterval(fadeOutInterval);
+        function fade(timestamp) {
 
-            music1.pause();
-            music1.currentTime = 0;
+            const elapsed =
+                timestamp - startTime;
 
-            // Bắt đầu bài 2
-            currentMusic = music2;
+            const progress =
+                Math.min(
+                    elapsed / FADE_TIME,
+                    1
+                );
 
-            music2.currentTime = 0;
-            music2.volume = 0;
 
-            music2.play()
-                .then(() => {
+            song1.volume =
+                startVolume *
+                (1 - progress);
 
-                    const fadeInInterval =
-                        setInterval(() => {
 
-                            music2.volume =
-                                Math.min(
-                                    SECOND_VOLUME,
-                                    music2.volume + 0.02
-                                );
+            if (progress < 1) {
 
-                            if (
-                                music2.volume >=
-                                SECOND_VOLUME
-                            ) {
+                requestAnimationFrame(fade);
 
-                                clearInterval(
-                                    fadeInInterval
-                                );
+            } else {
 
-                            }
+                song1.pause();
 
-                        }, 100);
+                song1.currentTime = 0;
+
+                song1.volume = 0;
+
+                startSong2();
+
+            }
+
+        }
+
+
+        requestAnimationFrame(fade);
+
+    }
+
+
+    /* =================================================
+       START SONG 2
+    ================================================= */
+
+    function startSong2() {
+
+        currentSong = song2;
+
+        song2.currentTime = 0;
+
+        song2.volume = 0;
+
+
+        song2.play()
+
+            .then(function () {
+
+                console.log(
+                    "❤️ Bài 1 đã hết → chuyển sang bài 2"
+                );
+
+
+                fadeInSong2();
+
+
+                updateButton();
+
+            })
+
+            .catch(function (error) {
+
+                console.log(
+                    "Không thể phát bài 2:",
+                    error
+                );
+
+            });
+
+    }
+
+
+    /* =================================================
+       FADE IN SONG 2
+    ================================================= */
+
+    function fadeInSong2() {
+
+        const startTime =
+            performance.now();
+
+
+        function fade(timestamp) {
+
+            const elapsed =
+                timestamp - startTime;
+
+            const progress =
+                Math.min(
+                    elapsed / FADE_TIME,
+                    1
+                );
+
+
+            song2.volume =
+                SONG2_VOLUME * progress;
+
+
+            if (progress < 1) {
+
+                requestAnimationFrame(fade);
+
+            } else {
+
+                song2.volume =
+                    SONG2_VOLUME;
+
+            }
+
+        }
+
+
+        requestAnimationFrame(fade);
+
+    }
+
+
+    /* =================================================
+       WHEN SONG 1 ENDS
+       
+       Đây là phần quan trọng nhất.
+       
+       Không cần proposal.
+       Không cần scroll.
+       Bài 1 hết → bài 2.
+    ================================================= */
+
+    song1.addEventListener(
+        "ended",
+        function () {
+
+            console.log(
+                "🎵 BÀI 1 ĐÃ HẾT"
+            );
+
+            fadeOutSong1();
+
+        }
+    );
+
+
+    /* =================================================
+       WHEN SONG 2 ENDS
+       
+       Cho bài 2 lặp lại.
+    ================================================= */
+
+    song2.addEventListener(
+        "ended",
+        function () {
+
+            console.log(
+                "❤️ Bài 2 kết thúc → phát lại"
+            );
+
+
+            song2.currentTime = 0;
+
+            song2.volume =
+                SONG2_VOLUME;
+
+
+            song2.play()
+
+                .then(function () {
+
+                    currentSong = song2;
 
                     updateButton();
-
-                })
-                .catch(error => {
-
-                    console.error(
-                        "Không thể phát bài 2:",
-                        error
-                    );
 
                 });
 
         }
-
-    }, 100);
-
-}
+    );
 
 
-    /* =====================================================
+    /* =================================================
        MUSIC BUTTON
-    ===================================================== */
+    ================================================= */
 
-    musicButton.addEventListener(
+    button.addEventListener(
         "click",
-        function (event) {
-
-            event.stopPropagation();
+        function () {
 
 
-            /* CHƯA CÓ NHẠC */
+            /* -----------------------------
+               CHƯA PHÁT NHẠC
+            ----------------------------- */
 
             if (!musicStarted) {
 
-                startFirstSong();
+                startSong1();
 
                 return;
 
             }
 
 
-            /* ĐANG TẮT */
+            /* -----------------------------
+               ĐANG TẮT
+            ----------------------------- */
 
-            if (currentMusic.paused) {
+            if (currentSong.paused) {
 
-                currentMusic.play();
+                userPaused = false;
 
-                updateButton();
+
+                currentSong.play()
+
+                    .then(function () {
+
+                        updateButton();
+
+                    });
 
                 return;
 
             }
 
 
-            /* ĐANG PHÁT */
+            /* -----------------------------
+               ĐANG PHÁT
+            ----------------------------- */
 
-            currentMusic.pause();
+            currentSong.pause();
+
+            userPaused = true;
 
             updateButton();
 
@@ -2792,13 +2844,45 @@ function switchToSecondSong() {
     );
 
 
-    /* =====================================================
-       FIRST USER INTERACTION
+    /* =================================================
+       TỰ ĐỘNG BẮT ĐẦU KHI CÔ ẤY MỞ CÂU CHUYỆN
        
-       Trình duyệt thường chặn autoplay.
-       Vì vậy bài 1 bắt đầu khi cô ấy
-       tương tác lần đầu với trang.
-    ===================================================== */
+       Nếu web của em có nút:
+       
+       "Mở câu chuyện này nhé ♡"
+       
+       thì tìm nó và bắt nhạc ngay khi bấm.
+    ================================================= */
+
+    const startButton =
+        document.querySelector(
+            '[onclick*="start"], .start-button, .open-button'
+        );
+
+
+    if (startButton) {
+
+        startButton.addEventListener(
+            "click",
+            function () {
+
+                startSong1();
+
+            },
+            {
+                once: true
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       FALLBACK
+       
+       Nếu không tìm được nút mở câu chuyện,
+       lần click đầu tiên trên trang sẽ bắt đầu nhạc.
+    ================================================= */
 
     document.addEventListener(
         "click",
@@ -2806,128 +2890,13 @@ function switchToSecondSong() {
 
             if (!musicStarted) {
 
-                startFirstSong();
+                startSong1();
 
             }
 
         },
         {
             once: true
-        }
-    );
-
-
-    /* =====================================================
-       CHUYỂN BÀI KHI ĐẾN PHẦN TỎ TÌNH
-       
-       Code của em đã có:
-       
-       id="proposal"
-       
-       nên hệ thống sẽ theo dõi phần này.
-    ===================================================== */
-
-    const proposal =
-        document.getElementById("proposal");
-
-
-    if (proposal) {
-
-        const observer =
-            new IntersectionObserver(
-                function (entries) {
-
-                    entries.forEach(
-                        function (entry) {
-
-                            if (
-                                entry.isIntersecting &&
-                                entry.intersectionRatio >= 0.3
-                            ) {
-
-                                switchToSecondSong();
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: [0.3]
-                }
-            );
-
-
-        observer.observe(proposal);
-
-    }
-
-
-    /* =====================================================
-       NẾU BÀI 1 HẾT TRƯỚC KHI ĐẾN PHẦN TỎ TÌNH
-       
-       → phát lại bài 1
-    ===================================================== */
-
-    music1.addEventListener(
-        "ended",
-        function () {
-
-            if (!music2Started) {
-
-                music1.currentTime = 0;
-
-                music2.play();
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       BÀI 2 HẾT
-       
-       → phát lại bài 2
-    ===================================================== */
-
-    music2.addEventListener(
-        "ended",
-        function () {
-
-            music2.currentTime = 0;
-
-            music2.play();
-
-        }
-    );
-
-
-    /* =====================================================
-       PAGE VISIBILITY
-       
-       Khi cô ấy chuyển tab:
-       → trình duyệt tự xử lý audio.
-       
-       Khi quay lại:
-       → không tự nhảy bài.
-    ===================================================== */
-
-    document.addEventListener(
-        "visibilitychange",
-        function () {
-
-            if (
-                document.hidden &&
-                currentMusic
-            ) {
-
-                /* Không làm gì.
-                   Giữ nguyên trạng thái. */
-
-            }
-
         }
     );
 
