@@ -2313,7 +2313,7 @@ function sayYes(){
 </audio>
 
 <audio id="loveMusic2" preload="auto">
-    <source src="The%20gioi%20cua%20anh.mp3" type="audio/mpeg">
+    <source src="Thegioicuaanh.mp3" type="audio/mpeg">
 </audio>
 
 
@@ -2673,65 +2673,78 @@ function sayYes(){
        SWITCH TO SONG 2
     ===================================================== */
 
-    function switchToSecondSong() {
+function switchToSecondSong() {
 
-        if (isSwitching) return;
+    if (isSwitching) return;
 
-        if (music2Started) return;
+    isSwitching = true;
+    music2Started = true;
 
-        if (!musicStarted) {
+    console.log("Đã đến phần tỏ tình → chuyển sang bài 2");
 
-            startFirstSong();
+    // Fade bài 1
+    const fadeOutInterval = setInterval(() => {
 
-        }
-
-
-        isSwitching = true;
-
-        music2Started = true;
-
-
-        /* FADE SONG 1 */
-
-        fadeOut(
-            music1,
-            FADE_TIME
+        music1.volume = Math.max(
+            0,
+            music1.volume - 0.02
         );
 
+        if (music1.volume <= 0) {
 
-        /* SAU KHI BÀI 1 NHỎ DẦN */
+            clearInterval(fadeOutInterval);
 
-        setTimeout(function () {
+            music1.pause();
+            music1.currentTime = 0;
 
-            music2.currentTime = 0;
-
-            music2.volume = 0;
-
+            // Bắt đầu bài 2
             currentMusic = music2;
 
+            music2.currentTime = 0;
+            music2.volume = 0;
 
             music2.play()
-                .then(function () {
+                .then(() => {
 
-                    fadeIn(
-                        music2,
-                        SECOND_VOLUME,
-                        2600
-                    );
+                    const fadeInInterval =
+                        setInterval(() => {
+
+                            music2.volume =
+                                Math.min(
+                                    SECOND_VOLUME,
+                                    music2.volume + 0.02
+                                );
+
+                            if (
+                                music2.volume >=
+                                SECOND_VOLUME
+                            ) {
+
+                                clearInterval(
+                                    fadeInInterval
+                                );
+
+                            }
+
+                        }, 100);
 
                     updateButton();
 
                 })
-                .catch(function () {
+                .catch(error => {
 
-                    music2Started = false;
+                    console.error(
+                        "Không thể phát bài 2:",
+                        error
+                    );
 
                 });
 
+        }
 
-        }, FADE_TIME);
+    }, 100);
 
-    }
+}
 
 
     /* =====================================================
