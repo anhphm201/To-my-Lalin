@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gửi em — một điều anh muốn nói</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Parisienne&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Be Vietnam Pro", sans-serif;
+    background: #fff8f7;
+    color: #3b2929;
+    overflow-x: hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.28;
+    background-image:
+        radial-gradient(#e9b8b8 0.7px, transparent 0.7px);
+    background-size: 22px 22px;
+    z-index: -1;
+}
+
+section {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 22px;
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 15px;
+    opacity: 0;
+    pointer-events: none;
+    animation: floatHeart linear forwards;
+    z-index: 5;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: .7;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   OPENING
+========================= */
+
+#opening {
+    flex-direction: column;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 40%, #fff 0%, #fff8f7 55%, #f8e7e6 100%);
+}
+
+.small {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #a97979;
+    margin-bottom: 24px;
+}
+
+.script {
+    font-family: "Parisienne", cursive;
+    font-size: clamp(48px, 12vw, 90px);
+    color: #9e3f4c;
+    line-height: 1;
+}
+
+.opening-title {
+    font-size: clamp(25px, 6vw, 43px);
+    font-weight: 500;
+    margin-top: 22px;
+    line-height: 1.45;
+}
+
+.opening-sub {
+    max-width: 520px;
+    margin-top: 20px;
+    color: #846c6c;
+    font-weight: 300;
+    line-height: 1.9;
+}
+
+.open-btn {
+    margin-top: 45px;
+    padding: 16px 30px;
+    border: 1px solid #c98f94;
+    border-radius: 999px;
+    background: rgba(255,255,255,.75);
+    color: #873f49;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 10px 30px rgba(120,50,60,.08);
+}
+
+.open-btn:hover {
+    transform: translateY(-3px);
+    background: #fff;
+    box-shadow: 0 15px 35px rgba(120,50,60,.14);
+}
+
+.scroll-note {
+    position: absolute;
+    bottom: 28px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #b69b9b;
+}
+
+/* =========================
+   STORY
+========================= */
+
+.story {
+    flex-direction: column;
+}
+
+.story-inner {
+    max-width: 760px;
+    width: 100%;
+}
+
+.chapter {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.chapter-number {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #b27878;
+    margin-bottom: 15px;
+}
+
+.chapter h2 {
+    font-size: clamp(28px, 6vw, 44px);
+    font-weight: 500;
+}
+
+.chapter p {
+    margin: 18px auto 0;
+    max-width: 600px;
+    line-height: 2;
+    color: #755f5f;
+    font-weight: 300;
+}
+
+.timeline {
+    position: relative;
+    margin-top: 55px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #dfc0c0;
+}
+
+.event {
+    width: 50%;
+    padding: 25px 40px;
+    position: relative;
+}
+
+.event:nth-child(odd) {
+    text-align: right;
+    padding-left: 0;
+}
+
+.event:nth-child(even) {
+    margin-left: 50%;
+    padding-right: 0;
+}
+
+.event::after {
+    content: "♡";
+    position: absolute;
+    top: 27px;
+    color: #a94f5b;
+    background: #fff8f7;
+    font-size: 15px;
+}
+
+.event:nth-child(odd)::after {
+    right: -9px;
+}
+
+.event:nth-child(even)::after {
+    left: -9px;
+}
+
+.date {
+    color: #a34c58;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.event h3 {
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.event p {
+    color: #806d6d;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+/* =========================
+   CALL SECTION
+========================= */
+
+.call-section {
+    background: #4a3032;
+    color: #fff8f7;
+    text-align: center;
+}
+
+.call-inner {
+    max-width: 700px;
+}
+
+.call-inner .small {
+    color: #d9b9b9;
+}
+
+.call-title {
+    font-size: clamp(30px, 7vw, 52px);
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.call-text {
+    margin-top: 28px;
+    color: #ead8d8;
+    line-height: 2.1;
+    font-weight: 300;
+}
+
+.phone-line {
+    margin: 40px auto;
+    width: 90px;
+    height: 1px;
+    background: #c58d92;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-section {
+    background: #fff;
+}
+
+.letter {
+    max-width: 720px;
+    width: 100%;
+    background: #fffdf9;
+    padding: clamp(35px, 7vw, 75px);
+    box-shadow: 0 25px 80px rgba(80,45,45,.10);
+    border: 1px solid #f1dddd;
+    position: relative;
+}
+
+.letter::before {
+    content: "♡";
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    color: #c15a65;
+    font-size: 25px;
+}
+
+.letter-date {
+    text-align: right;
+    color: #a98b8b;
+    font-size: 12px;
+    margin-bottom: 35px;
+}
+
+.letter h2 {
+    font-family: "Parisienne", cursive;
+    color: #963e4b;
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 35px;
+}
+
+.letter p {
+    font-size: 16px;
+    line-height: 2.2;
+    color: #554343;
+    margin-bottom: 24px;
+}
+
+.highlight {
+    color: #9e3f4c;
+}
+
+.signature {
+    margin-top: 40px;
+    text-align: right;
+    font-family: "Parisienne", cursive;
+    font-size: 35px;
+    color: #963e4b;
+}
+
+/* =========================
+   FLOWER
+========================= */
+
+.flower-section {
+    flex-direction: column;
+    text-align: center;
+    background: #fff8f7;
+}
+
+.flower {
+    font-size: 80px;
+    margin-bottom: 30px;
+    animation: flowerFloat 4s ease-in-out infinite;
+}
+
+@keyframes flowerFloat {
+    0%,100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+.flower-section h2 {
+    font-size: clamp(29px, 7vw, 48px);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.flower-section p {
+    max-width: 600px;
+    margin-top: 22px;
+    color: #796565;
+    line-height: 2;
+}
+
+/* =========================
+   FINAL QUESTION
+========================= */
+
+#question {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 50% 45%, #fff1f1 0%, #f9dddd 50%, #d9a2a7 100%);
+    text-align: center;
+}
+
+.question-inner {
+    max-width: 720px;
+}
+
+.question-small {
+    color: #8b555b;
+    letter-spacing: 4px;
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+
+.question-inner h1 {
+    font-family: "Parisienne", cursive;
+    font-size: clamp(60px, 15vw, 110px);
+    color: #8e3544;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.question-inner h2 {
+    font-size: clamp(25px, 6vw, 43px);
+    font-weight: 500;
+    margin-top: 25px;
+    line-height: 1.5;
+}
+
+.question-text {
+    margin: 25px auto 0;
+    max-width: 570px;
+    color: #654b4d;
+    line-height: 2;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.yes-btn {
+    border: none;
+    background: #8e3544;
+    color: white;
+    padding: 17px 34px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 12px 35px rgba(100,30,40,.22);
+    transition: .3s;
+}
+
+.yes-btn:hover {
+    transform: translateY(-4px) scale(1.03);
+}
+
+.love-note {
+    margin-top: 35px;
+    font-family: "Parisienne", cursive;
+    color: #8e3544;
+    font-size: 32px;
+}
+
+/* =========================
+   END
+========================= */
+
+#ending {
+    display: none;
+    text-align: center;
+    background:
+        radial-gradient(circle at center, #fff 0%, #fff1f1 50%, #f4cccc 100%);
+}
+
+.ending-inner {
+    max-width: 650px;
+}
+
+.ending-heart {
+    font-size: 75px;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    20% { transform: scale(1.15); }
+    40% { transform: scale(1); }
+}
+
+.ending-inner h1 {
+    font-family: "Parisienne", cursive;
+    font-size: clamp(58px, 14vw, 100px);
+    color: #8e3544;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+.ending-inner h2 {
+    font-size: clamp(24px, 5vw, 38px);
+    font-weight: 500;
+    line-height: 1.5;
+    margin-top: 15px;
+}
+
+.ending-inner p {
+    color: #715858;
+    line-height: 2;
+    margin-top: 25px;
+}
+
+.final-sign {
+    margin-top: 40px;
+    font-family: "Parisienne", cursive;
+    font-size: 40px;
+    color: #8e3544;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 650px) {
+
+    section {
+        padding: 55px 20px;
+    }
+
+    .timeline::before {
+        left: 12px;
+    }
+
+    .event,
+    .event:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        padding: 25px 0 25px 40px;
+        text-align: left;
+    }
+
+    .event:nth-child(odd)::after,
+    .event:nth-child(even)::after {
+        left: 3px;
+        right: auto;
+    }
+
+    .letter p {
+        font-size: 15px;
+        line-height: 2;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     OPENING
+========================= -->
+
+<section id="opening">
+
+    <div class="small">11.07.2026 — 19.08.2026</div>
+
+    <div class="script">To my love</div>
+
+    <div class="opening-title">
+        Có một điều anh muốn nói với em.
+    </div>
+
+    <p class="opening-sub">
+        Không phải một câu nói anh có thể buột miệng nói trong một cuộc gọi.
+        <br>
+        Nên hôm nay, anh viết nó lại ở đây.
+    </p>
+
+    <button class="open-btn" onclick="openStory()">
+        Mở ra nhé ♡
+    </button>
+
+    <div class="scroll-note">SCROLL DOWN</div>
+
+</section>
+
+
+<!-- =========================
+     STORY
+========================= -->
+
+<section class="story" id="story">
+
+    <div class="story-inner">
+
+        <div class="chapter">
+            <div class="chapter-number">CHAPTER I</div>
+            <h2>Một ngày rất bình thường</h2>
+
+            <p>
+                Có lẽ lúc bắt đầu, chẳng ai trong hai đứa nghĩ rằng
+                một cuộc trò chuyện vào ngày 11 tháng 7
+                lại có thể đưa chúng ta đến tận hôm nay.
+            </p>
+        </div>
+
+        <div class="timeline">
+
+            <div class="event">
+                <div class="date">11.07</div>
+                <h3>Ngày chúng mình bắt đầu nói chuyện</h3>
+                <p>
+                    Một ngày chẳng có gì đặc biệt.
+                    Nhưng sau này nhìn lại, anh nghĩ đó là
+                    một trong những ngày đáng nhớ nhất.
+                </p>
+            </div>
+
+            <div class="event">
+                <div class="date">NHỮNG NGÀY SAU ĐÓ</div>
+                <h3>Từ một cuộc trò chuyện thành một thói quen</h3>
+                <p>
+                    Tin nhắn nhiều hơn.
+                    Những câu chuyện dài hơn.
+                    Và rồi anh bắt đầu mong đến lúc được nói chuyện với em mỗi ngày.
+                </p>
+            </div>
+
+            <div class="event">
+                <div class="date">MỖI NGÀY</div>
+                <h3>Những cuộc gọi không muốn kết thúc</h3>
+                <p>
+                    Có những lúc chẳng cần nói gì nhiều.
+                    Chỉ cần biết ở đầu dây bên kia vẫn còn có em.
+                    Thế là đủ.
+                </p>
+            </div>
+
+            <div class="event">
+                <div class="date">NHỮNG ĐÊM</div>
+                <h3>Để máy gọi đến sáng</h3>
+                <p>
+                    Anh gọi em ngủ.
+                    Rồi sáng hôm sau lại gọi em dậy.
+                    Một việc rất nhỏ thôi,
+                    nhưng chẳng hiểu từ lúc nào nó trở thành điều anh mong chờ.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CALL
+========================= -->
+
+<section class="call-section">
+
+    <div class="call-inner">
+
+        <div class="small">CHAPTER II</div>
+
+        <div class="call-title">
+            Có những mối quan hệ<br>
+            bắt đầu trước cả khi<br>
+            người ta gọi tên nó.
+        </div>
+
+        <div class="phone-line"></div>
+
+        <p class="call-text">
+            Chúng mình gọi nhau là “vợ”, là “người yêu”.
+            <br><br>
+            Em vẫn cười rồi hỏi:
+            <br>
+            <em>“Ny hồi nào?”</em>
+            <br><br>
+            Còn anh thì cứ trốn tránh câu trả lời
+            bằng cách nói sang một chuyện khác.
+            <br><br>
+            Nhưng thật ra...
+            anh biết em đang chờ một câu trả lời nghiêm túc.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LETTER
+========================= -->
+
+<section class="letter-section">
+
+    <div class="letter">
+
+        <div class="letter-date">
+            19 tháng 8, 2026
+        </div>
+
+        <h2>Gửi em,</h2>
+
+        <p>
+            Trước giờ anh vẫn luôn nghĩ rằng tình yêu phải bắt đầu
+            bằng một khoảnh khắc thật lớn lao.
+            Một nơi thật đẹp. Một câu nói thật hoàn hảo.
+        </p>
+
+        <p>
+            Nhưng rồi anh gặp em.
+        </p>
+
+        <p>
+            Và anh nhận ra đôi khi tình yêu bắt đầu
+            từ những điều rất nhỏ:
+            một cuộc gọi mỗi tối,
+            một câu chúc ngủ ngon,
+            một người chờ người kia gọi dậy,
+            hay chỉ đơn giản là
+            <span class="highlight">muốn được nghe giọng của nhau thêm một chút nữa.</span>
+        </p>
+
+        <p>
+            Anh biết khoảng cách giữa chúng mình không gần.
+            Anh cũng biết phía trước sẽ có những ngày bận rộn,
+            những lúc nhớ nhau,
+            những lúc không thể ở cạnh nhau ngay khi mình muốn.
+        </p>
+
+        <p>
+            Nhưng nếu người ở đầu bên kia vẫn là em,
+            thì anh nghĩ những điều đó đều đáng để cố gắng.
+        </p>
+
+        <p>
+            Anh không hứa rằng mình sẽ luôn làm mọi thứ thật hoàn hảo.
+            Nhưng anh có thể hứa rằng,
+            khi em cần một người ở bên,
+            <span class="highlight">anh sẽ cố gắng là người đó.</span>
+        </p>
+
+        <p>
+            Cho tâm tình của anh ở lại nơi em,
+            từng ngày, từng ngày nhé.
+        </p>
+
+        <div class="signature">
+            — Anh
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FLOWER
+========================= -->
+
+<section class="flower-section">
+
+    <div class="flower">🌷</div>
+
+    <h2>
+        Có lẽ vì thế<br>
+        anh đã chọn những bông hoa này cho em.
+    </h2>
+
+    <p>
+        Không phải vì chúng là những bông hoa đẹp nhất trên đời.
+        <br><br>
+        Mà vì anh muốn chúng giống điều anh muốn nói:
+        <br>
+        <strong>
+            dịu dàng, chân thành,
+            và từ từ nở rộ theo thời gian.
+        </strong>
+    </p>
+
+</section>
+
+
+<!-- =========================
+     FINAL QUESTION
+========================= -->
+
+<section id="question">
+
+    <div class="question-inner">
+
+        <div class="question-small">
+            VÀ ĐIỀU CUỐI CÙNG ANH MUỐN HỎI
+        </div>
+
+        <h1>Em à...</h1>
+
+        <h2>
+            Mình thôi gọi nhau<br>
+            là “người yêu hồi nào” nhé?
+        </h2>
+
+        <p class="question-text">
+            Vì hôm nay anh muốn hỏi em một cách thật nghiêm túc.
+            <br><br>
+            Không phải trong một câu đùa.
+            Không phải giữa một cuộc gọi.
+            Không phải để em phải đoán nữa.
+        </p>
+
+        <div class="buttons">
+
+            <button class="yes-btn" onclick="sayYes()">
+                Em đồng ý ♡
+            </button>
+
+        </div>
+
+        <div class="love-note">
+            Em làm người yêu anh nhé?
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ENDING
+========================= -->
+
+<section id="ending">
+
+    <div class="ending-inner">
+
+        <div class="ending-heart">❤️</div>
+
+        <h1>Vậy nhé.</h1>
+
+        <h2>
+            Từ hôm nay,<br>
+            mình chính thức là người yêu của nhau.
+        </h2>
+
+        <p>
+            Cảm ơn em vì đã xuất hiện.
+            <br>
+            Cảm ơn em vì đã ở lại.
+            <br><br>
+            Và cảm ơn em vì từ giờ,
+            anh có thể gọi em là người yêu
+            mà không cần phải hỏi:
+            <br>
+            <em>“Ny hồi nào?”</em>
+        </p>
+
+        <div class="final-sign">
+            Anh yêu em. ♡
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   OPEN STORY
+========================= */
+
+function openStory() {
+
+    document.getElementById("story").scrollIntoView({
+        behavior: "smooth"
+    });
+
+    createHearts(8);
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    const hearts = ["♡", "♥", "♡", "❤"];
+    heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (10 + Math.random() * 14) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 6) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 12000);
+}
+
+function createHearts(amount = 4) {
+
+    for (let i = 0; i < amount; i++) {
+        setTimeout(createHeart, i * 180);
+    }
+}
+
+setInterval(() => {
+    createHeart();
+}, 1800);
+
+
+/* =========================
+   SAY YES
+========================= */
+
+function sayYes() {
+
+    createHearts(35);
+
+    setTimeout(() => {
+
+        document.getElementById("question").style.display = "none";
+
+        const ending = document.getElementById("ending");
+
+        ending.style.display = "flex";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }, 900);
+}
+
+</script>
+
+</body>
+</html>
